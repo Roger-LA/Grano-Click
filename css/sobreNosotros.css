@@ -1,0 +1,19 @@
+#navBar, #navbar-nav a:visited, #navbar-nav a:hover, #navbar-nav a:active, #nav-link a{
+    height: 55px;
+    background-color: #26658C;
+    color: #FFFFFF;
+    text-decoration: none;
+    border-radius: 50px;
+    box-shadow: 0px 8px 15px -3px black;
+    font-family: "Outfit", sans-serif;
+}
+
+#carrito,a#carrito{
+    background-color: #FDF5AA;
+    border-radius: 15px;
+    color: #011C40;
+    box-shadow: 0px 8px 15px -3px black;
+}
+body{
+    background-color: #26658C;
+}

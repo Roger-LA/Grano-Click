@@ -1,36 +1,36 @@
 [
     {
-        "foto": "./assets/4.EmmaFoto1.png",
+        "foto": "../assets/4.EmmaFoto1.png",
         "nombre": "Emmanuel Aguilar",
         "rol": "Desarrollador full stack",
         "biografia": "Soy un ingeniero en Tecnologías de la Información, mi pasión e intereses principales son la Inteligencia Artificial, Visión Artificial y la interpretación de grandes datos. La orientación que quiero para mi carrera se basa en ayudar en todo lo que pueda a la sociedad, ya sea diseñando soluciones de impacto ambiental o encontrando vías alternativas a lo establecido."
     },
     {
-        "foto": "./assets/2.MalenyFoto.png",
+        "foto": "../assets/2.MalenyFoto.png",
         "nombre": "Maleny Dominguez",
         "rol": "Desarrolladora full stack",
         "biografia": "Desarrolladora Java Full Stack y egresada de Ingeniería en Tecnologías de la Información y Comunicación. Me apasiona crear soluciones web funcionales y bien pensadas, combinando lógica, diseño y buenas prácticas. Me impulsa la mejora continua, la curiosidad y el trabajo colaborativo. Disfruto enfrentar retos que requieren creatividad y análisis, siempre buscando aportar valor real a cada proyecto en el que participo."
     },
     {
-        "foto": "./assets/3.JobFoto.png",
+        "foto": "../assets/3.JobFoto.png",
         "nombre": "Job Hernández",
         "rol": "Desarrollador full stack",
         "biografia": "Soy puro movimiento: curiosidad, intención y diversión. Me gusta crear cosas que conecten de verdad, que se sientan auténticas y que aporten algo real. No le corro a lo nuevo ni a los retos; al contrario, me impulsan. Mantengo lo simple, lo práctico y lo auténtico, siempre buscando dejar cada proyecto mejor de como lo encontré."
     },
    {
-        "foto": "./assets/5.ErickFoto.png",
+        "foto": "../assets/5.ErickFoto.png",
         "nombre": "Erick Valencia",
         "rol": "Desarrollador full stack",
         "biografia": "Desarrollador web e Ingeniero en Sistemas, apasionado por la tecnología y el aprendizaje continuo. Con experiencia en desarrollo web, bases de datos y soporte técnico, participante de proyectos retadores. Se caracteriza por su curiosidad, responsabilidad y capacidad de trabajo en equipo, siempre dispuesto a enfrentar nuevos retos."
     },
    {
-        "foto": "./assets/1.BrendaFoto.png",
+        "foto": "../assets/1.BrendaFoto.png",
         "nombre": "Brenda Montaño",
         "rol": "Desarrolladora full stack",
         "biografia": "Soy diseñadora de modas y actualmente me encuentro en transición hacia el mundo del desarrollo web, combinando mi visión estética y atención al detalle con habilidades tecnológicas para crear experiencias digitales funcionales y visualmente atractivas. Me apasiona la innovación y el diseño desde una perspectiva integral que une creatividad y tecnología."
     },
    {
-        "foto": "./assets/6.RogelioFoto.png",
+        "foto": "../assets/6.RogelioFoto.png",
         "nombre": "Rogelio Luis",
         "rol": "Desarrollador full stack",
         "biografia": "MI filosofía de vida: nunca dejar de aprender.Me formé como Ingeniero Mecánico y Eléctrico, pero mi pasión por los retos me llevó a pivotar hacia la Ciencia de Datos y el Desarrollo Full Stack. Disfruto profundamente enfrentar nuevos desafíos y siempre busco el camino más innovador para optimizar procesos."

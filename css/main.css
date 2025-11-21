@@ -6,12 +6,13 @@ html{
     --fifthColor: #54ACBF;
     --textColor:#FFFFFF;
     --hgColor:#FDF5AA;
-    /* --prymaryFont:; */
-
+    --mainFamilyFont: font-family: "Outfit", sans-serif;
+    
 }
 
 body{
     background-color: var(--bgColor);   
+    font-family: var(--mainFamilyFont);
 }
 #navBar,
 #navbar-nav a:visited,
@@ -24,7 +25,7 @@ body{
   text-decoration: none;
   border-radius: 2rem;
   box-shadow: 0 0.3rem 0.5rem -0.12rem black;
-  font-family: var(--family-font)
+  
 }
 
 .nav-link{
@@ -40,12 +41,17 @@ body{
 a#carrito {
   background-color: var(--hgColor);
   border-radius: 0.5rem;
-  color: #011C40;
+  color:black;
   box-shadow: 0 0.3rem 0.5rem -0.12rem black;
 }
 
+#footer-container {
+  flex-shrink: 0; /* No dejes que el footer se aplaste */
+  width: 100%;
+}
+
 .footer-gradient {
-  background: linear-gradient(to right, #FFFFFF, var(--fifthColor));
+  background: linear-gradient(to right, white, var(--fifthColor));
   padding: 1rem 0;
 }
 

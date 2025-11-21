@@ -102,7 +102,7 @@ div#semiFootContainer {
   
 }
 
-.semiFoot img {
+div.semiFoot img {
   width: 100%;
   object-fit: contain;
 }

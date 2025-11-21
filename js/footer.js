@@ -110,3 +110,4 @@ if (contenedorFooter) {
 } else {
     console.error("Error: No encontré el div con id 'footer-container'");
 }
+

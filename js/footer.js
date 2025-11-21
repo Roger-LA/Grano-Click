@@ -94,10 +94,10 @@ const footer = `
 `;
 
 // 1. Inyectar el CSS en el <head> del documento
-const etiquetaEstilo = document.createElement('style');
+/* const etiquetaEstilo = document.createElement('style');
 etiquetaEstilo.textContent = footerEstilos;
 document.head.appendChild(etiquetaEstilo);
-
+ */
 // 2. Inyectar el HTML en el lugar correcto
 const contenedorFooter = document.getElementById('footer-container');
 if (contenedorFooter) {

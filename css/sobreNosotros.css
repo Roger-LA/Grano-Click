@@ -1,27 +1,16 @@
+
 div#welcome {
   justify-content: center;
   align-items: center;
    display: flex;
   flex-direction: column;
   height: 60rem;
-  background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(0, 0, 0, 0.7));
-  color: #fff;
+  background: linear-gradient( var(--primaryColor),white),url(../assets/CafeteriaAboutUS.webp) ;
+  color: var(--textColor);
   text-align: center;
-  padding: 3rem;
+  padding: 1.5rem;
   margin-bottom: 1rem;
 }
-
-div#teamCards{
-  margin-top: 1rem;
-}
-.nav-link{
-    color: white;
-}
-.nav-link:hover{
-    color:#FDF5AA;
-    font-weight: bolder ;
-}
-
 h2#title {
   margin: 2rem;
   padding: 1rem;
@@ -37,114 +26,30 @@ p#teamText {
   font-size: 1.5rem;
   margin-bottom: 1.5em;
 }
-button#info{
-  margin-top: 3rem;
-  height: 3rem;
-  width: 6rem;
-  padding: 1rem;
-  text-align: center;
-
-}
-
 a#linkAboutUs {
-  padding: 1rem;
-  background-color: #007BFF;
-  color: white;
+  padding: 0.5rem;
+  background-color: var(--bgColor);
+  color:var(--textColor);
   text-decoration: none;
   border-radius: 0.8rem;
   transition: background-color 0.3s;
   margin: 1rem;
 }
 
-div#semiFootContainer {
-  width: 100%;
-  height: 22rem;
-  color: white;
-   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  
+div#teamCards{
+  margin-top: 1rem;
 }
-
-div.semiFoot {
-  flex: 1;
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-}
-
-.semiFoot img {
-  width: 100%;
-  object-fit: contain;
-}
-
-div.semiFoot-text {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  /* Alinea todo a la izquierda */
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: white  ;
-  max-width: 90%;
-}
-
-div#semiFoot-text p {
-  margin-bottom: 1rem;
-  width: 100%;
-}
-
-div#semifoot-cofee {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: white;
-}
-
-#navBar,
-#navbar-nav a:visited,
-#navbar-nav a:hover,
-#navbar-nav a:active,
-#nav-link a {
-  height: 55px;
-  background-color: #26658C;
-  color: #FFFFFF;
-  text-decoration: none;
-  border-radius: 50px;
-  box-shadow: 0px 8px 15px -3px black;
-  font-family: "Outfit", sans-serif;
-}
-
-#carrito,
-a#carrito {
-  background-color: #FDF5AA;
-  border-radius: 15px;
-  color: #011C40;
-  box-shadow: 0px 8px 15px -3px black;
-}
-
-body {
-  background-color: #26658C;
-}
-
-
-
-.team-card {
+div.team-card {
   text-align: center;
-  padding: 0.5rem;
+  padding: 2rem 0 2rem 0;
   border-radius: 0.5rem;
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--bgColor);
   backdrop-filter: blur(10px);
-  color: #fff;
-  border: 0.1rem solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 0 0.8rem rgba(0, 0, 0, 0.3);
+  color:var(--textColor);
+  border: 0.1rem solid var(--thirdColor);
+  box-shadow: 0 0 0.8rem var(--primaryColor);
+  
+
 }
 
 /* Foto redonda */
@@ -154,11 +59,11 @@ body {
   width: 40%;
   border-radius: 50%;
   object-fit: cover;
-  border: 0.3rem solid #ffffff;
+  border: 0.3rem solid var(--textColor);
   margin-bottom: 0.5rem;
 }
 
-/* Títulos */
+/* Nombres */
 .team-card h3 {
   margin: 1rem 0;
   font-size: 1rem;
@@ -168,14 +73,53 @@ body {
 .team-card h4 {
   margin: 0.3rem 0;
   font-size: 1rem;
-  color: #d1e8ff;
+  color: var(--textColor);
 }
 
 /* Descripción */
 .team-card p {
   font-size: 0.9rem;
   margin-top: 0.6rem;
-  color: #e5e5e5;
+  color: var(--textColor);
   overflow: hidden;
 }
+
+button#info{
+  margin-top: 3rem;
+  height: 3rem;
+  width: 6rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+div#semiFootContainer {
+  width: 100%;
+  height: 30rem;
+  color: var(--textColor);
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  
+}
+
+.semiFoot img {
+  width: 100%;
+  object-fit: contain;
+}
+
+div#semiFoot-text {
+  font-size: 1.1rem;
+  object-fit: contain;
+
+  p.semiFootp{
+    text-align: center;
+  }
+}
+
+
+
+
+
+
+
 

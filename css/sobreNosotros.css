@@ -8,6 +8,13 @@ div#welcome {
   text-align: center;
   padding: 3rem;
 }
+.nav-link{
+    color: white;
+}
+.nav-link:hover{
+    color:#FDF5AA;
+    font-weight: bolder ;
+}
 
 h2#title {
   margin: 1rem;

@@ -2,11 +2,95 @@ html{
     --primaryColor: #011C40;
     --secondaryColor: #023859;
     --thirdColor: #023859;
-    --fouthColor: #26658C;
+    --bgColor: #26658C;
     --fifthColor: #54ACBF;
-
+    --textColor:#FFFFFF;
+    --hgColor:#FDF5AA;
+    --mainFamilyFont: font-family: "Outfit", sans-serif;
+    
 }
 
 body{
-    
+    background-color: var(--bgColor);   
+    font-family: var(--mainFamilyFont);
+}
+#navBar,
+#navbar-nav a:visited,
+#navbar-nav a:hover,
+#navbar-nav a:active,
+#nav-link a {
+  height: 55px;
+  background-color:var(--bgColor);
+  color: #FFFFFF;
+  text-decoration: none;
+  border-radius: 2rem;
+  box-shadow: 0 0.3rem 0.5rem -0.12rem black;
+  
+}
+
+.nav-link{
+    color:var(--textColor) ;
+}
+
+.nav-link:hover{
+    color:var(--hgColor);
+    font-weight: bolder ;
+}
+
+#carrito,
+a#carrito {
+  background-color: var(--hgColor);
+  border-radius: 0.5rem;
+  color:black;
+  box-shadow: 0 0.3rem 0.5rem -0.12rem black;
+}
+
+#footer-container {
+  flex-shrink: 0; /* No dejes que el footer se aplaste */
+  width: 100%;
+}
+
+.footer-gradient {
+  background: linear-gradient(to right, white, var(--fifthColor));
+  padding: 1rem 0;
+}
+
+.footer-brand {
+  font-weight: 700;
+  letter-spacing: 0.02rem;
+  color:var(--primaryColor);
+  text-decoration: none;
+}
+
+.footer-copyright {
+  font-size: 0.95rem;
+  color:var(--primaryColor);
+  opacity: 0.92;
+  margin-top: 0.5rem;
+}
+
+.footer-links a {
+  color:var(--primaryColor);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.footer-links a:hover,
+.footer-links a:focus {
+  color: var(--primaryColor);
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.disabled-link {
+  pointer-events: none;
+  color: gray;
+  cursor: default;
+  text-decoration: none;
+}
+
+@media (max-width: 24rem) {
+  .footer-links {
+    align-items: center;
+  }
 }

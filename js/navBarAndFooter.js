@@ -14,8 +14,10 @@ function putHTML(place, textToPut,msg) {
 }
 
 function getIconPath(page,iconName){
+    console.log(page.id);
+    
     let path = "";
-    if (page ==="indexHere") {
+    if (page.id ==="indexHere") {
         path = `./assets/${iconName}`
     }else{
         path = `../assets/${iconName}`

@@ -14,13 +14,27 @@ function putHTML(place, textToPut,msg) {
 }
 
 function getIconPath(page,iconName){
-    console.log(page.id);
+
     
     let path = "";
     if (page.id ==="indexHere") {
         path = `./assets/${iconName}`
     }else{
         path = `../assets/${iconName}`
+    }
+    return path;
+}
+function getPagePaths(page,element){
+    
+    let path = "";
+    if (page.id ==="indexHere"  && element ==="index.html") {
+        path = `./${element}`
+    }else if (page.id !=="indexHere" && element ==="index.html"){
+        path = `../${element}`
+    }else if(page.id !=="indexHere" && element !=="index.html"){
+        path = `./${element}`
+    }else if(page.id =="indexHere" && element !=="index.html"){
+        path = `./html/${element}`
     }
     return path;
 }
@@ -52,7 +66,10 @@ const footer = `
 }
 
 function buildNavBar(page){
-let iconPath = getIconPath(page,"LogoBien.png");
+let iconPath = getIconPath(page,"LogoBien.png"); 
+let indexPage = getPagePaths(page,"index.html");
+let usPage = getPagePaths(page,"sobreNosotros.html");
+
 const navBar = `
   <nav class="navbar navbar-expand-lg mt-2">
           <div class="container" id="navBar">
@@ -61,7 +78,7 @@ const navBar = `
             <div class="collapse navbar-collapse" id="mainNavbarContent">
               <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                  <a class="nav-link" href="/index.html">Inicio </a>
+                  <a class="nav-link" href="${indexPage}">Inicio </a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="/productos.html">Productos</a>
@@ -70,7 +87,7 @@ const navBar = `
                   <a class="nav-link" href="/contacto.html">Contáctanos</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" href="/nosotros.html">Sobre nosotros</a>
+                  <a class="nav-link active" href="${usPage}">Sobre nosotros</a>
                 </li>
               </ul>
 

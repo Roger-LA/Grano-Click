@@ -6,7 +6,7 @@ html{
     --fifthColor: #54ACBF;
     --textColor:#FFFFFF;
     --hgColor:#FDF5AA;
-    --mainFamilyFont: font-family: "Outfit", sans-serif;
+    --mainFamilyFont: "Outfit", sans-serif;
     
 }
 
@@ -25,7 +25,30 @@ body{
   text-decoration: none;
   border-radius: 2rem;
   box-shadow: 0 0.3rem 0.5rem -0.12rem black;
+  font-family: var(--mainFamilyFont);
   
+}
+
+.navbar-toggler {
+  background-color: var(--primaryColor);
+  border-radius: 50rem;
+}
+
+@media (max-width: 991.98px) {
+  .navbar {
+    position: relative;
+  }
+
+  #mainNavbarContent {
+    position: absolute;
+    top: 85%;
+    right: 0;
+    width: 10rem;
+    background-color: var(--primaryColor);
+    padding: 1rem;
+    border-radius: 1rem;
+    z-index: 1000;
+  }
 }
 
 .nav-link{

@@ -5,75 +5,136 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Grano&Click - Bienvenidos</title>
+
+  <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-  <link rel="stylesheet" href="./css/main.css" />
-  <link rel="stylesheet" href="./css/sobreNosotros.css" />
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Contrail+One&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Tilt+Prism&display=swap"
+    rel="stylesheet" />
+
+  <!-- Tus estilos -->
+  <link rel="stylesheet" href="./css/main.css" />
 </head>
 
 <body>
-  <div class="container">
-    <div class="row">
-      <header id="encabezado">
-        <nav class="navbar navbar-expand-lg mt-2">
-          <div class="container" id="navBar">
-            <img src="./assets/LogoBien.png" alt="Logo" height="35" />
+  <div class="container main-wrapper" id="indexHere">
 
-            <div class="collapse navbar-collapse" id="mainNavbarContent">
-              <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                  <a class="nav-link" href="/index.html">Home </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/productos.html">Productos</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/contacto.html">Contáctanos</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/nosotros.html">Sobre nosotros</a>
-                </li>
-              </ul>
+    <header id="encabezado"></header>
 
-              <ul class="navbar-nav d-flex">
-                <li class="nav-item">
-                  <a class="nav-link" href="/inicioSesion.html">Iniciar sesión</a>
-                </li>
-                <li class="nav-item me-3">
-                  <a class="nav-link" href="/registro.html">Registrarse</a>
-                </li>
-                <li class="nav-item" id="carrito">
-                  <a class="btn" href="/carrito.html" role="button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                      class="bi bi-cart2" viewBox="0 1.8 16 16">
-                      <path
-                        d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l1.25 5h8.22l1.25-5zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0" />
-                    </svg>
-                    Carrito
-                  </a>
-                </li>
-              </ul>
+    <main id="page-content">
+
+      <!-- HERO TARJETA UNO -->
+      <section class="hero-section mt-4 mb-5">
+        <div class="hero-grid">
+          <div class="hero-card hero-left">
+            <img src="./assets/heroUno.png" alt="Latte Art" class="img-fluid rounded-img">
+          </div>
+
+          <!-- HERO TARJETA DOS -->
+
+          <div class="hero-card hero-center">
+            <div class="overlay"></div>
+
+            <div class="content-relative text-center p-4">
+              <h3 class="brand-title mb-4">GRANO & CLICK</h3>
+
+              <div class="info-item mb-4">
+                <i class="bi bi-stopwatch fs-2 feature-icon"></i>
+                <h5 class="mt-2">Energía en Tiempo Récord.</h5>
+                <p>Recibe tu café y repostería en minutos. Hemos optimizado la logística para que no pierdas el foco en
+                  tu
+                  trabajo.</p>
+              </div>
+              <div class="info-item mb-4">
+                <i class="bi bi-cup-hot fs-2 feature-icon"></i>
+                <h5 class="mt-2">Excelencia Gourmet.</h5>
+                <p>Garantizamos la más alta calidad en cada producto. Disfruta de una experiencia única, visualmente
+                  atractiva y deliciosa.</p>
+              </div>
+              <div class="info-item">
+                <i class="bi bi-heart fs-2 feature-icon"></i>
+                <h5 class="mt-2">Fácil y Rápido.</h5>
+                <p>Compra en línea en pocos clics y siente la calidez de nuestro servicio digital. Siempre listos para
+                  ayudarte con un trato cordial.</p>
+              </div>
             </div>
           </div>
-        </nav>
-      </header>
 
-      <div id="page-content">
-        <!-- Todo tu contenido principal -->
-      </div>
+          <!-- HERO TARJETA TRES -->
+
+          <div class="hero-card hero-right">
+            <img src="./assets/PastelUno.png" alt="Pastel de chocolate" class="img-fluid rounded-img">
+          </div>
+        </div>
+      </section>
+
+      <!-- Título de sección -->
+      <section class="section-title-container mb-4">
+        <h2>Nuestros clásicos: Los favoritos de la comunidad.</h2>
+      </section>
+
+      <!-- Productos -->
+
+      <section class="products-container p-4 p-md-5 mb-5">
+        <div class="products-layout">
+
+          <div class="small-products-group">
+
+            <div class="product-card text-center">
+              <div class="img-box mb-3">
+                <img src="./assets/CafePremium.png" alt="Café Premium">
+              </div>
+              <p class="product-name">Café Premium.</p>
+              <button class="btn btn-details" onclick="verDetalles('Café Premium')">Ver Detalles</button>
+            </div>
+            <div class="product-card text-center">
+              <div class="img-box mb-3">
+                <img src="./assets/Capuchino.png" alt="Capuchino">
+              </div>
+              <p class="product-name">El Capuchino con Espuma.</p>
+              <button class="btn btn-details" onclick="verDetalles('Capuchino')">Ver Detalles</button>
+            </div>
+            <div class="product-card text-center">
+              <div class="img-box mb-3">
+                <img src="./assets/Reposteria.png" alt="Repostería">
+              </div>
+              <p class="product-name">Repostería Recién Horneada.</p>
+              <button class="btn btn-details" onclick="verDetalles('Repostería')">Ver Detalles</button>
+            </div>
+
+          </div>
+
+          <div class="large-products-group">
+            <div class="large-img-box">
+              <img src="./assets/VariosPasteles.png" alt="Mesa de postres" class="img-fluid">
+            </div>
+            <div class="large-img-box">
+              <img src="./assets/Panes.png" alt="Panes variados" class="img-fluid">
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Footer inyectado -->
+  <div id="footer-container"></div>
 
 
-
-      <div id="footer-container"></div>
-
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-      <script src="./js/main.js"></script>
-      <script src="./js/footer.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script src="./js/main.js"></script>
+  <script src="./js/navBarAndFooter.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

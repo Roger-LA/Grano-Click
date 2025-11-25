@@ -69,6 +69,8 @@ function buildNavBar(page){
 let iconPath = getIconPath(page,"LogoBien.png"); 
 let indexPage = getPagePaths(page,"index.html");
 let usPage = getPagePaths(page,"sobreNosotros.html");
+let contactoPage = getPagePaths(page,"contacto.html");
+
 
 const navBar = `
   <nav class="navbar navbar-expand-lg mt-2">
@@ -84,7 +86,7 @@ const navBar = `
                   <a class="nav-link" href="/productos.html">Productos</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="/contacto.html">Contáctanos</a>
+                  <a class="nav-link" href="${contactoPage}">Contáctanos</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link active" href="${usPage}">Sobre nosotros</a>

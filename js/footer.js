@@ -24,7 +24,7 @@ body {
   width: 100%;
 }
 
-/* --- TUS ESTILOS VISUALES (Sin cambios) --- */
+/* ESTILOS VISUALES */
 .footer-gradient {
   background: linear-gradient(to right, #FFFFFF, #54ACBF);
   padding: 1rem 0;

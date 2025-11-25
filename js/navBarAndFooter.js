@@ -73,14 +73,20 @@ let contactoPage = getPagePaths(page,"contacto.html");
 
 
 const navBar = `
-  <nav class="navbar navbar-expand-lg mt-2">
+  <nav class="navbar navbar-dark navbar-expand-lg mt-2">
           <div class="container" id="navBar">
-            <img src="${iconPath}" alt="Logo" height="35" />
-
+            <a class="navbar-brand" href="./index.html"> 
+              <img src="${iconPath}" alt="Logo" height="35" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#mainNavbarContent" aria-controls="mainNavbarContent"
+              aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button> 
             <div class="collapse navbar-collapse" id="mainNavbarContent">
               <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                  <a class="nav-link" href="${indexPage}">Inicio </a>
+                  <a class="nav-link" href="/index.html">Inicio </a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="/productos.html">Productos</a>
@@ -89,7 +95,7 @@ const navBar = `
                   <a class="nav-link" href="${contactoPage}">Contáctanos</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" href="${usPage}">Sobre nosotros</a>
+                  <a class="nav-link active" href="./html/sobreNosotros.html">Sobre nosotros</a>
                 </li>
               </ul>
 

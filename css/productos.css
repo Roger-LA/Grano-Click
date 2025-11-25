@@ -1,0 +1,140 @@
+html {
+  --primaryColor: #011C40;
+  --secondaryColor: #023859;
+  --bgColor: #26658C;
+  --fifthColor: #54ACBF;
+  --color-light: #A7EBF2;
+  --textColor: #FFFFFF;
+  --hgColor: #FDF5AA;
+  --mainFamilyFont: "Outfit", sans-serif;
+
+
+}
+h1 {
+  font-family: var(--title_font);
+  font-size: 3.5rem;
+  text-align: center;
+  color: var(--hgColor);
+  font-weight: 600;
+  text-shadow: none;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.container .carousel-slide .carousel-inner .carousel-item-active {
+  border-radius: 2rem;
+
+}
+
+.product-card-wrapper {
+  position: relative;
+  width: 20rem;
+  margin: 2rem auto 0 auto;
+  padding-top: 18rem;
+}
+
+.product-card-wrapper .product-image-floating {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: none;
+  height: 20rem;
+  object-fit: cover;
+  border-radius: 3rem;
+  box-shadow: 0rem 0rem 0.5rem 0rem;
+  z-index: 2;
+  color: rgb(14, 8, 43);
+}
+
+.product-card-wrapper .product-info-card .card-body {
+  padding: 1rem;
+  text-align: center;
+  background-color: var(--primaryColor);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 92%;
+  margin: 0 auto;
+  border-radius: 1rem;
+
+}
+
+.product-info-card .card-title {
+  color: var(--hgColor);
+  font-family: var(--title_font);
+  text-transform: uppercase;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+
+}
+
+.product-info-card .card-text {
+  color: var(--textColor);
+  font-size: 1rem;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+  font-family: var(--text_font);
+}
+
+.product-info-card .card-price {
+  color: var(--color-light);
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  font-family: var(--text_font);
+}
+
+/*--- Estilos del Input Group (Contador y Botones) --- */
+
+.product-quantity-control {
+  width: calc(100% + 0.2rem);
+  margin: 1.5rem -0.15rem -0.15rem -0.15rem;
+  overflow: hidden;
+
+}
+
+.product-quantity-control .btn {
+  background-color: var(--secondaryColor);
+  border: none;
+  color: var(--primaryColor);
+  font-weight: bold;
+  padding: 0.5rem 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  flex-grow: 1;
+}
+
+.product-quantity-control .btn:hover {
+  background-color: var(--thirdColor);
+  color: var(--fouthColor);
+}
+
+.product-quantity-control #contador {
+  background-color: var(--secondaryColor);
+  border: none;
+  color: var(--fifthColor);
+  font-size: 1.2rem;
+  font-weight: bold;
+  width: 3rem;
+  flex: none;
+}
+
+.product-quantity-control .btn-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: contain;
+}
+
+.product-quantity-control#btn-quitar {
+  border-bottom-right-radius: 1rem;
+  border-top-right-radius: 1rem;
+
+}
+

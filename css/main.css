@@ -211,56 +211,101 @@ body {
 
 @media (max-width: 1024px) {
 
-  /* HERO pasa a columna */
   .hero-grid {
-    display: grid !important;
-    grid-template-columns: 1fr !important; 
-    grid-template-rows: auto auto !important;
-    gap: 1.5rem !important;
-  }
-
-  /* ORDEN CORRECTO PARA MOVIL */
-  .hero-center {
-    grid-column: 1 / 2 !important;
-    grid-row: 1 / 2 !important;
-    height: auto !important; 
-    padding: 2rem 1.5rem !important;
-    background-color: var(--secondaryColor) !important;
-    backdrop-filter: blur(6px) !important
-  }
-
-  .hero-left {
-    grid-column: 1 / 2 !important;
-    grid-row: 1 / 2 !important;
-    height: 300px !important;
-  }
-
-  .hero-right {
-    grid-column: 1 / 2 !important;
-    grid-row: 1 / 2 !important;
-    height: 300px !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto !important;
+    gap: 0 !important;
+    position: relative;
+    height: 100%;
+    min-height: 500px;
   }
 
   .hero-card {
-    width: 100%;
-    height: auto;
-    padding: 0 !important;
-    overflow: hidden;
+    grid-column: 1 / 2 !important;
+    grid-row: 1 / 2 !important;
+    height: auto !important;
+    min-height: 500px;
+    border-radius: 20px;
     position: relative;
-    background-color: transparent !important;
-    backdrop-filter: none;
+    box-shadow: none;
   }
 
   .hero-card img {
-    width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: cover !important;
-    display: block;
+    position: absolute; /* Permite que el texto se superponga */
+    top: 0;
+    left: 0;
   }
 
+  /* --- TARJETA CENTRAL (TEXTO): ORDEN Y ESTILO --- */
+
+  .hero-center {
+    z-index: 5; /* La tarjeta central debe ir encima de todo (z-index) */
+    background-image: none !important;
+    background-color: rgba(38, 101, 140, 0.7) !important;
+    backdrop-filter: blur(2px) !important; /* Añadimos un ligero desenfoque para mejor legibilidad */
+    padding: 3rem 1.5rem !important;
+    display: flex; /* Asegura el centrado del contenido */
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* El contenido de texto debe ser relativo para interactuar con el z-index */
+  .content-relative {
+      position: relative;
+      z-index: 10;
+  }
+
+  /* --- IMÁGENES LATERALES: EFECTO DE CORTINA / MÁSCARA --- */
+  
+  .hero-left, .hero-right {
+    z-index: 1; /* Detrás del texto central */
+    /* Ajustes para el efecto de transparencia simulada */
+    clip-path: none !important;
+  }
+  
+  .hero-left img {
+      /* Imagen de la izquierda se vea a la izquierda del texto central */
+      clip-path: polygon(0 0, 40% 0, 40% 100%, 0 100%);
+  }
+
+  .hero-right img {
+      /* Imagen de la derecha se vea a la derecha del texto central */
+      clip-path: polygon(60% 0, 100% 0, 100% 100%, 60% 100%);
+  }
+  
+  .section-title-container h2 {
+    font-size: 2rem; 
+    text-align: center;
+  }
+  
+  .products-layout {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .small-products-group {
+    justify-content: center;
+  }
+
+  .large-products-group {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
 }
 
+/* Para pantallas aún más pequeñas, ajustamos el clipping para más espacio al texto */
+@media (max-width: 576px) {
+    .hero-left img {
+        clip-path: polygon(0 0, 30% 0, 30% 100%, 0 100%);
+    }
 
+    .hero-right img {
+        clip-path: polygon(70% 0, 100% 0, 100% 100%, 70% 100%);
+    }
+}
 
 /* ------------------------------
    NAVBAR Y FOOTER

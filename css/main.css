@@ -12,7 +12,6 @@ html {
 }
 
 body {
-  /* Gradiente de fondo */
   font-family: 'Outfit', sans-serif;
   background: linear-gradient(90deg, var(--secondaryColor) 0%, var(--bgColor) 100%);
   min-height: 100vh;
@@ -23,7 +22,6 @@ body {
 
 .main-wrapper {
   max-width: 75rem;
-  /* Ancho máximo para desktop grande */
 }
 
 /* ------------------------------
@@ -44,11 +42,8 @@ body {
   width: 100%;
   border-radius: 1.25rem;
   overflow: hidden;
-  /* Para que nada se salga de los bordes redondeados */
   position: relative;
-  /* Necesario para posicionar elementos dentro */
   box-shadow: 0 0.625rem 1.25rem #011C40;
-  /* Sombra suave para dar profundidad */
 }
 
 .hero-card img {
@@ -172,14 +167,11 @@ body {
   background-color: var(--color-light);
   color: var(--primaryColor);
   font-size: 1rem;
-  /* Ajustado ligeramente */
   font-weight: 37.5rem;
   border-radius: 3.125rem;
-  /* Pill shape */
   padding: 0.5rem 1.5rem;
   border: none;
   transition: transform 0.2s, background-color 0.2s;
-  /* Requerimiento táctil */
   min-height: 2.75rem;
 }
 
@@ -233,7 +225,7 @@ body {
   .hero-card img {
     height: 100%;
     object-fit: cover !important;
-    position: absolute; /* Permite que el texto se superponga */
+    position: absolute;
     top: 0;
     left: 0;
   }
@@ -241,50 +233,48 @@ body {
   /* --- TARJETA CENTRAL (TEXTO): ORDEN Y ESTILO --- */
 
   .hero-center {
-    z-index: 5; /* La tarjeta central debe ir encima de todo (z-index) */
+    z-index: 5;
     background-image: none !important;
-    background-color: rgba(38, 101, 140, 0.4) !important; ----------
-    backdrop-filter: blur(0.125rem) !important; /* Añadimos un ligero desenfoque para mejor legibilidad */
+    background-color: rgba(38, 101, 140, 0.4) !important;
+    backdrop-filter: blur(0.125rem) !important;
     padding: 3rem 1.5rem !important;
-    display: flex; /* Asegura el centrado del contenido */
+    display: flex;
     align-items: center;
     justify-content: center;
   }
-  
+
   /* El contenido de texto debe ser relativo para interactuar con el z-index */
   .content-relative {
-      position: relative;
-      z-index: 10;
+    position: relative;
+    z-index: 10;
   }
 
   /* --- IMÁGENES LATERALES: EFECTO DE CORTINA / MÁSCARA --- */
-  
-  .hero-left, .hero-right {
-    z-index: 1; /* Detrás del texto central */
-    /* Ajustes para el efecto de transparencia simulada */
+
+  .hero-left,
+  .hero-right {
+    z-index: 1;
     clip-path: none !important;
   }
-  
+
   .hero-left img {
-      /* Imagen de la izquierda se vea a la izquierda del texto central */
-      clip-path: polygon(0 0, 40% 0, 40% 100%, 0 100%);
+    clip-path: polygon(0 0, 40% 0, 40% 100%, 0 100%);
   }
 
   .hero-right img {
-      /* Imagen de la derecha se vea a la derecha del texto central */
-      clip-path: polygon(60% 0, 100% 0, 100% 100%, 60% 100%);
+    clip-path: polygon(60% 0, 100% 0, 100% 100%, 60% 100%);
   }
-  
+
   .section-title-container h2 {
-    font-size: 2rem; 
+    font-size: 2rem;
     text-align: center;
   }
-  
+
   .products-layout {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .small-products-group {
     justify-content: center;
   }
@@ -296,15 +286,15 @@ body {
   }
 }
 
-/* Para pantallas aún más pequeñas, ajustamos el clipping para más espacio al texto */
-@media (max-width: 576px) {
-    .hero-left img {
-        clip-path: polygon(0 0, 30% 0, 30% 100%, 0 100%);
-    }
 
-    .hero-right img {
-        clip-path: polygon(70% 0, 100% 0, 100% 100%, 70% 100%);
-    }
+@media (max-width: 576px) {
+  .hero-left img {
+    clip-path: polygon(0 0, 30% 0, 30% 100%, 0 100%);
+  }
+
+  .hero-right img {
+    clip-path: polygon(70% 0, 100% 0, 100% 100%, 70% 100%);
+  }
 }
 
 /* ------------------------------
@@ -323,7 +313,7 @@ body {
   border-radius: 2rem;
   box-shadow: 0 0.3rem 0.5rem -0.12rem black;
   font-family: var(--mainFamilyFont);
-  
+
 }
 
 .navbar-toggler {
@@ -367,7 +357,6 @@ a#carrito {
 
 #footer-container {
   flex-shrink: 0;
-  /* No dejes que el footer se aplaste */
   width: 100%;
 }
 
@@ -415,6 +404,3 @@ a#carrito {
     align-items: center;
   }
 }
-
-
-

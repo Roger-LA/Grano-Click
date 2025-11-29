@@ -10,6 +10,8 @@ html {
 
 
 }
+
+/*Encabezado*/
 h1 {
   font-family: var(--title_font);
   font-size: 3.5rem;
@@ -19,18 +21,64 @@ h1 {
   text-shadow: none;
   padding-top: 1rem;
   padding-bottom: 1rem;
+  text-shadow:0 0 1rem var(--textColor), 
+    0 0 2rem var(--primaryColor),  
+    0 0 2rem var(--bgColor), 
+    0 0 3rem var(--color-light), 
+    0 0 4rem var(--hgColor);
 }
 
-.container .carousel-slide .carousel-inner .carousel-item-active {
+/*Carrusel*/
+.carousel-item img {
   border-radius: 2rem;
 
 }
 
+
+.category-divider {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  width: 100%;
+}
+
+.category-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.8em;
+  color: var(--fouthColor);
+  margin-right: 20px;
+  white-space: nowrap;
+  text-shadow: 0 0 3rem var(--primaryColor);
+}
+
+.line-with-diamond {
+  flex-grow: 1;
+  height: 1px;
+  background-color: var(--textColor);
+  position: relative;
+}
+
+.line-with-diamond::after {
+  content: '';
+  position: absolute;
+  right: -5px;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  width: 10px;
+  height: 10px;
+  background-color: var(--textColor);
+}
+
+
+/*Cards*/
 .product-card-wrapper {
   position: relative;
   width: 20rem;
   margin: 2rem auto 0 auto;
   padding-top: 18rem;
+
 }
 
 .product-card-wrapper .product-image-floating {
@@ -38,7 +86,7 @@ h1 {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 100%;
+  width: 110%;
   max-width: none;
   height: 20rem;
   object-fit: cover;
@@ -49,16 +97,16 @@ h1 {
 }
 
 .product-card-wrapper .product-info-card .card-body {
-  padding: 1rem;
+  padding: 2rem;
   text-align: center;
   background-color: var(--primaryColor);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  width: 92%;
+  width: 100%;
   margin: 0 auto;
   border-radius: 1rem;
-
+  background-image: url(../assets/Producto/Fondo_Cards.png); 
 }
 
 .product-info-card .card-title {
@@ -76,7 +124,7 @@ h1 {
   color: var(--textColor);
   font-size: 1rem;
   line-height: 1.4;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   font-family: var(--text_font);
 }
 
@@ -85,41 +133,46 @@ h1 {
   font-size: 1rem;
   font-weight: bold;
   margin-top: 1rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 3rem;
   font-family: var(--text_font);
 }
 
-/*--- Estilos del Input Group (Contador y Botones) --- */
+/*--- Estilos de (Contador y Botones) --- */
 
 .product-quantity-control {
-  width: calc(100% + 0.2rem);
+  width: calc(100% + 0.3rem);
   margin: 1.5rem -0.15rem -0.15rem -0.15rem;
   overflow: hidden;
-
+  position: absolute;
+  bottom: 0;
+  object-fit: cover;
+  border-radius: 2rem;
 }
 
 .product-quantity-control .btn {
-  background-color: var(--secondaryColor);
+  background-color: var(--color-light);
   border: none;
   color: var(--primaryColor);
   font-weight: bold;
-  padding: 0.5rem 0.8rem;
+  padding: 0.5rem 0.83rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.3rem;
+  gap: 1rem;
   flex-grow: 1;
+
+
 }
 
 .product-quantity-control .btn:hover {
-  background-color: var(--thirdColor);
-  color: var(--fouthColor);
+  background-color: var(--textColor);
+  color: var(--primaryColor);
 }
 
 .product-quantity-control #contador {
-  background-color: var(--secondaryColor);
+  background-color: var(--hgColor);
   border: none;
-  color: var(--fifthColor);
+  color: var(--primaryColor);
   font-size: 1.2rem;
   font-weight: bold;
   width: 3rem;
@@ -133,7 +186,7 @@ h1 {
 }
 
 .product-quantity-control#btn-quitar {
-  border-bottom-right-radius: 1rem;
+  border-bottom-right-radius:1rem;
   border-top-right-radius: 1rem;
 
 }

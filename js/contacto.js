@@ -78,6 +78,7 @@ send.addEventListener("click", function (event) {
   } else {
     let mensaje = "";
     respuesta.style.color = "red";
+    
     if (resultados.length > 2) {
       respuesta.innerHTML = `Lo sentimos, pero los campos ${resultados
         .slice(1)
@@ -87,6 +88,7 @@ send.addEventListener("click", function (event) {
         .slice(1)
         .join(", ")} no es válido`;
     }
+
     camposConReglas.forEach(({input}) => {
       input.style.border = "2px solid #ced4da";
     });
@@ -107,4 +109,3 @@ send.addEventListener("click", function (event) {
     msg.style.border = "2px solid #ced4da"; 
   }
 });
-

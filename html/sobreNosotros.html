@@ -18,44 +18,47 @@
 
 <body>
   <!-- header -->
+  <div id="aboutUsHere">
+    <header id="encabezado"></header>
 
-
-  <div class="container" id="aboutUsHere">
-    <div class="row">
-      <header id="encabezado">
-      </header>
-    </div>
+  <!-- main -->
     <main>
-      <div id="welcome">
-        <!-- welcome -->
-        <h2 id="title">Nuestro café es tan humano como nuestro equipo</h2>
-        <h3 id="subtitle">Cada taza tiene una historia, y aqui te contamos la nuestra</h3>
-        <h4><a href="#teamCards" id="linkAboutUs">Conócenos +</a></h4>
-        <!-- welcome -->
 
+      <!-- Hero -->
+      <section class="hero d-flex align-items-center">
+        <div class="container text-center">
+          <div class="row justify-content-center">
+            <div class="col-lg-10 col-md-12">
+              <h1>Nuestro café es tan humano como nuestro equipo</h1>
+              <p class="lead lead-hero">Cada taza tiene una historia, y aquí te contamos la nuestra</p>
+              <h4><a href="#teamCards" id="linkAboutUs">Conócenos +</a></h4>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Hero -->
 
-      </div>
       <!-- team cards -->
-
-
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3" id="teamCards">
+      <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3" id="teamCards"></div>
       </div>
       <!-- team cards -->
 
       <!-- semiFoot -->
-      <div class="row row-cols-xs-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2" id="semiFootContainer">
-
-          <img class="semifoot"src="../assets/teamwork.jpg" alt="Nuestro equipo" />
-
-        <div class="col" id=semiFoot-text>
-          <p class="semiFootp">
-            Somos 6 personas con un gran amor por el café y a los proyectos retadores.
-          </p>
-          <p class="semiFootp"> ☕Hecho con amor en México</p>
-
+      <div class="container">
+        <div class="row row-cols-1 row-cols-lg-2 align-items-center justify-content-center"
+         id="semiFootContainer">
+          <div class="col">
+            <img class="semifoot" src="../assets/teamwork.jpg" alt="Nuestro equipo" />
+          </div>
+          <div class="col" id="semiFoot-text">
+            <p class="semiFootp">
+              Somos 6 personas con un gran amor por el café y a los proyectos retadores.
+            </p>
+            <p class="semiFootp"> ☕ Hecho con amor en México</p>
+          </div>
         </div>
       </div>
-
       <!-- semiFoot -->
     </main>
   </div>

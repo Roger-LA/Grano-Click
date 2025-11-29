@@ -1,48 +1,45 @@
 const teamCards = document.getElementById("teamCards");
+let teamData = [];
+
 function getTeam() {
-  let team = [];
   fetch("../data/sobreNosotros.json")
     .then((res) => res.json())
     .then((data) => {
-      team = data;
-      teamCards.insertAdjacentHTML("beforeend", createCards(team));
+      teamData = data;
+      teamCards.insertAdjacentHTML("beforeend", createCards(teamData));
     })
     .catch((error) => {
       console.log(error.message);
     });
-}
+}// getTeam
 
-function getDesciption(id, data) {
-  let cont = 1;
+function getInfo(id) {
+  const index = parseInt(id.replace("info",""),10) - 1;
+  return teamData[index] || null;
+}//getInfo
 
-  for (const element of data) {
-    `info${cont}` === id;
-    if (`info${cont}` === id) {
-      return element["biografia"];
-    }
-    cont++;
-  }
-  return null;
-}
 function showInfo(id) {
-  let team = [];
-  fetch("../data/sobreNosotros.json")
-    .then((res) => res.json())
-    .then((data) => {
-      team = data;
-      let description = getDesciption(id, data);
-      if (description != null) {
-        Swal.fire({
-          title: "Descripcion",
-          text: description,
-          icon: "info",
-        });
-      }
-    })
-    .catch((error) => {
-      console.log(error.message);
-    });
-}
+  const teamMember = getInfo(id);
+  if (!teamMember){
+     return
+  }
+  const extraImg = teamMember.nombre === "Emmanuel Aguilar" ? " img-fix-emma" : "";
+  Swal.fire({
+    html: `<div class="swal-team-header">
+      <img src="${teamMember.foto}" alt="${teamMember.nombre}" class="swal-team-img${extraImg}" />
+      <h3 class="swal-team-name">${teamMember.nombre}</h3>
+      <h4 class="swal-team-role">${teamMember.rol}</h4>
+    </div>
+    <p class="swal-team-text">${teamMember.biografia}</p>`,
+    confirmButtonText: "Cerrar",
+    background: "#F9F3EF",
+    color: "#011C40",
+    customClass:{
+      popup: "swal-team-modal",
+      confirmButton: "swal-team-btn",
+    }
+  });
+}//showInfo
 
 function createCards(data) {
   let card = ``;
@@ -50,32 +47,28 @@ function createCards(data) {
 
   for (const element of data) {
     card += `
-<div class="team-card col">
-    <img src="${element["foto"]}" alt="${element["nombre"]}" />
-    <h3>${element["nombre"]}</h3>
-    <h4>${element["rol"]}</h4>
-    <p>${element["biografia"].slice(0, 20)}...</p>
-    <button id="info${cont}" class="btn btn-info info">Ver mas</button>
-
-</div>
-
+    <div class="col">
+      <div class="team-card">
+        <img src="${element["foto"]}" alt="${element["nombre"]}" />
+        <h3>${element["nombre"]}</h3>
+        <h4>${element["rol"]}</h4>
+        <p>${element["biografia"].slice(0, 60)}...</p>
+        <button id="info${cont}" class="btn info">Ver más</button>
+      </div>
+    </div>
     `;
     cont++;
   }
-
   return card;
-}
+}//createCards
 
 window.addEventListener("load", function (event) {
   event.preventDefault();
   getTeam();
 });
 
-btnsInfo = document.getElementsByClassName("info");
-
 document.addEventListener("click", (e) => {
   const btn = e.target.closest(".info");
   if (!btn) return;
-
   showInfo(btn.id);
 });

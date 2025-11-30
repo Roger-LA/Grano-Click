@@ -3,12 +3,6 @@
  * Lógica general para la Home Page de Grano & Click
  */
 
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('Grano & Click: Home cargado correctamente.');
-    
-    // Aquí podrías inicializar animaciones o cargar datos dinámicos si fuera necesario.
-});
-
 /**
  * Función para manejar el clic en "Ver Detalles".
  * Muestra un mensaje indicando que la funcionalidad está en construcción.

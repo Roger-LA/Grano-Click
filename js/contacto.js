@@ -38,6 +38,27 @@ function validateAll() {
   return resultados;
 }
 
+const camposConReglas = [
+  { input: name, reg: regs.name },
+  { input: email, reg: regs.email },
+  { input: phone, reg: regs.phone },
+];
+
+function marcarBorde(input, reg) {
+  const valor = input.value.trim();
+  if (valor === "" || !reg.test(valor)) {
+    input.style.border = "2px solid red";
+  } else {
+    input.style.border = "2px solid #ced4da"; 
+  }
+}
+
+camposConReglas.forEach(({ input, reg }) => {
+  input.addEventListener("input", () => {
+    marcarBorde(input, reg);
+  });
+});
+
 send.addEventListener("click", function (event) {
   event.preventDefault();
   const form = document.getElementById("contactForm");
@@ -46,9 +67,18 @@ send.addEventListener("click", function (event) {
   if (resultados[0]) {
     respuesta.innerHTML = `¡Gracias, <strong>${name.value}</strong>!  
       Hemos recibido tu mensaje y te responderemos a la brevedad.`;
+    respuesta.style.color = "green";
     form.reset();
+
+    camposConReglas.forEach(({ input }) => {
+      input.style.border = "2px solid #ced4da";
+    });
+    msg.style.border = "2px solid #ced4da";
+
   } else {
     let mensaje = "";
+    respuesta.style.color = "red";
+    
     if (resultados.length > 2) {
       respuesta.innerHTML = `Lo sentimos, pero los campos ${resultados
         .slice(1)
@@ -58,7 +88,24 @@ send.addEventListener("click", function (event) {
         .slice(1)
         .join(", ")} no es válido`;
     }
-  }
 
-  
+    camposConReglas.forEach(({input}) => {
+      input.style.border = "2px solid #ced4da";
+    });
+
+    resultados.slice(1).forEach(campo => {
+      switch (campo) {
+        case "nombre":
+          name.style.border = "2px solid red";
+          break;
+        case "correo":
+          email.style.border = "2px solid red";
+          break;
+        case "telefono":
+          phone.style.border = "2px solid red";
+          break;
+      }
+    });
+    msg.style.border = "2px solid #ced4da"; 
+  }
 });

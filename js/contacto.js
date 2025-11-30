@@ -96,12 +96,12 @@ function enviarCorreo(){
     .then(function(response) {
       respuesta.insertAdjacentHTML(
       "beforeend",
-      `<strong>¡Gracias, ${name.value}!<br>  
+      `<strong>¡Gracias!<br>  
       Hemos recibido tu mensaje y te responderemos a la brevedad.</strong>`);
     }, function(error) {
       respuesta.insertAdjacentHTML(
       "beforeend",
-      `<strong>¡Gracias, ${name.value}!<br>  
+      `<strong>¡Gracias!<br>  
       Hubo un problema al comunicarse contigo, inténtalo más tarde </strong>`);    });
      
 

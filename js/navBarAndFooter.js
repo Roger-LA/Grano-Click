@@ -72,6 +72,7 @@ let iconPath = getIconPath(page,"LogoBien.png");
 let indexPage = getPagePaths(page,"index.html");
 let usPage = getPagePaths(page,"sobreNosotros.html");
 let contactoPage = getPagePaths(page,"contacto.html");
+let productPage = getPagePaths(page,"productos.html")
 
 const navBar = `
   <nav class="navbar navbar-dark navbar-expand-lg mt-2">
@@ -90,7 +91,7 @@ const navBar = `
                   <a class="nav-link" href="${indexPage}">Inicio </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="/productos.html">Productos</a>
+                  <a class="nav-link" href="${productPage}">Productos</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="${contactoPage}">Contáctanos</a>

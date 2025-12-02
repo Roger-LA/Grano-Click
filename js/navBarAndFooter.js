@@ -42,12 +42,13 @@ function getPagePaths(page,element){
 
 function buildFooter(page){
 let iconPath = getIconPath(page,"LogoFooter.png");
+let contactoPage = getPagePaths(page,"contacto.html");
 const footer = `
   <footer class="footer-gradient py-3">
     <div class="container">
       <div class="row align-items-center flex-column flex-md-row text-center text-md-start">
         <div class="col-md-6 mb-3 mb-md-0 d-flex flex-column align-items-center align-items-md-start">
-          <a href="#" class="footer-brand" aria-label="Grano & Click">
+          <a href="${contactoPage}" class="footer-brand" aria-label="Grano & Click">
 
             <img src="${iconPath}" alt="LogoFooter" height="35">
 
@@ -77,7 +78,7 @@ let productPage = getPagePaths(page,"productos.html")
 const navBar = `
   <nav class="navbar navbar-dark navbar-expand-lg mt-2">
           <div class="container" id="navBar">
-            <a class="navbar-brand" href="./index.html"> 
+            <a class="navbar-brand" href="${indexPage}"> 
               <img src="${iconPath}" alt="Logo" height="35" />
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"

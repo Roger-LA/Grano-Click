@@ -8,8 +8,8 @@ let regs = {
   name: /^(?!.*[<>;\'\"\\\/])[A-Za-záéíóúñ]{2,}(?:[\s][A-Za-záéíóúñ]{2,}){0,98}$/,
   email:
     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-  phone: /^\d{10}$/, //// ^(?:\+52\d{10}|\d{10})$
-  msg: /^(?!.*[<>\'\"\\\/])[A-Za-z0-9áéíóúÁÉÍÓÚñÑüÜ\s.,;#!?¿¡]{0,200}$/,
+  phone: /^(?!0\d{2}|1\d{2}|2[0-1]\d|220)(?!(\d)\1{9}$)(?!0123456789$)(?!1234567890$)(?!9876543210$)(?!0101010101$)(?!(\d\d)\2{4}$)\d{10}$/,
+  msg: /^(?!.*[<>\'\/])[A-Za-z0-9áéíóúÁÉÍÓÚñÑüÜ\s.,;#!?¿¡]{3,300}$/,
 };
 
 function validate(reg, item) {
@@ -82,17 +82,14 @@ function marcarBorde(input, reg) {
 
 function enviarCorreo(){
   emailjs.init("Ne4BmN0pOIkYrKrtE");
-  let msgRedo = msg.value =="" ? "No agregaste un mensaje":msg.value;
   const templateParams = {
-        emailCompany: "granoandclick@gmail.com",
-        urlCompany: "https://roger-la.github.io/Grano-Click/index.html",
         nameClient: name.value,
         emailClient: email.value,
         phoneClient:phone.value, 
-        message: msgRedo
+        message: msg.value
     };
 
-    emailjs.send('service_8i405gn', 'template_3wvbfsv', templateParams)
+    emailjs.send('service_8i405gn', 'template_lnf5o9s', templateParams)
     .then(function(response) {
       respuesta.insertAdjacentHTML(
       "beforeend",
@@ -124,6 +121,7 @@ send.addEventListener("click", function (event) {
   if (resultados[0]) {
     enviarCorreo();
     form.reset();
+    console.log("exito");
     camposConReglas.forEach(({ input }) => {
       input.style.border = "0.12rem solid #ced4da";
     });

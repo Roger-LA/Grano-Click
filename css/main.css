@@ -10,9 +10,18 @@ html{
     
 }
 
-body{
-    background-color: var(--bgColor);   
-    font-family: var(--mainFamilyFont);
+<<<<<<< Updated upstream
+
+=======
+body {
+  /* Gradiente de fondo */
+  font-family: var(--mainFamilyFont);
+  background: linear-gradient(90deg, var(--secondaryColor) 0%, var(--bgColor) 100%);
+  min-height: 100vh;
+  color: var(--textColor);
+  margin: 0;
+  padding: 0;
+>>>>>>> Stashed changes
 }
 #navBar,
 #navbar-nav a:visited,
@@ -66,6 +75,12 @@ a#carrito {
   border-radius: 0.5rem;
   color:black;
   box-shadow: 0 0.3rem 0.5rem -0.12rem black;
+}
+
+.form-login{
+  background-color: var(--primaryColor);
+  border: 1px solid var(--hgColor);
+  border-radius: 1rem;
 }
 
 #footer-container {

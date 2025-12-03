@@ -50,7 +50,15 @@ const footer = `
 }
 
 function buildNavBar(page){
-let iconPath = getIconPath(page,"LogoBien.png");
+<<<<<<< Updated upstream
+
+=======
+let iconPath = getIconPath(page,"LogoBien.png"); 
+let indexPage = getPagePaths(page,"index.html");
+let usPage = getPagePaths(page,"sobreNosotros.html");
+let logPage = getPagePaths(page,"login.html");
+
+>>>>>>> Stashed changes
 const navBar = `
   <nav class="navbar navbar-dark navbar-expand-lg mt-2">
           <div class="container" id="navBar">
@@ -65,7 +73,7 @@ const navBar = `
             <div class="collapse navbar-collapse" id="mainNavbarContent">
               <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                  <a class="nav-link" href="/index.html">Inicio </a>
+                  <a class="nav-link" href="${indexPage}l">Inicio </a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="/productos.html">Productos</a>
@@ -74,13 +82,13 @@ const navBar = `
                   <a class="nav-link" href="/contacto.html">Contáctanos</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" href="./html/sobreNosotros.html">Sobre nosotros</a>
+                  <a class="nav-link active" href="${usPage}">Sobre nosotros</a>
                 </li>
               </ul>
 
               <ul class="navbar-nav d-flex">
                 <li class="nav-item">
-                  <a class="nav-link" href="/inicioSesion.html">Iniciar sesión</a>
+                  <a class="nav-link" href="${logPage}">Iniciar sesión</a>
                 </li>
                 <li class="nav-item me-3">
                   <a class="nav-link" href="/registro.html">Registrarse</a>

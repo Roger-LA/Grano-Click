@@ -457,7 +457,8 @@ padding: 10px 15px;
   border-radius: 1rem;
   box-shadow: -0.7rem 1rem 1rem -0.12rem black;
   max-width: 45rem;
-  height: 30rem;
+
+  height: clamp(30rem, 5vw, 35rem);
   padding-top: 2rem;
   padding-left: 4rem;
   margin-bottom: 5rem;

@@ -1,0 +1,99 @@
+[
+    {
+        "id": "cafe_1",
+        "nombre": "Espresso",
+        "categoria": "cafe",
+        "descripcion": "Carga de café espresso intenso y directo",
+        "precio": 45,
+        "foto": "../assets/cafe_1.png"
+    },
+    {
+        "id": "cafe_2",
+        "nombre": "Espresso Americano",
+        "categoria": "cafe",
+        "descripcion": "100% grano de café espresso rebajado con agua caliente",
+        "precio": 72,
+        "foto": "../assets/cafe_2.png"
+    },
+    {
+        "id": "cafe_3",
+        "nombre": "Capuchino",
+        "categoria": "cafe",
+        "descripcion": "Shot de espresso con leche espumada",
+        "precio": 82,
+        "foto": "../assets/cafe_3.png"
+    },
+    {
+        "id": "cafe_4",
+        "nombre": "Latte",
+        "categoria": "cafe",
+        "descripcion": "Carga de café espresso con leche cremosa vaporizada",
+        "precio": 82,
+        "foto": "../assets/cafe_4.png"
+    },
+    {
+        "id": "cafe_5",
+        "nombre": "Moca",
+        "categoria": "cafe",
+        "descripcion": "Espresso con leche y chocolate líquido",
+        "precio": 75,
+        "foto": "../assets/cafe_5.png"
+    },
+    {
+        "id": "cafe_6",
+        "nombre": "Café de olla",
+        "categoria": "cafe",
+        "descripcion": "Café mexicano con canela y notas especiadas",
+        "precio": 70,
+        "foto": "../assets/cafe_6.png"
+    },
+
+    {
+        "id": "past_1",
+        "nombre": "Cheesecake",
+        "categoria": "pasteleria",
+        "descripcion": "Rebanada de cheesecake clásico y cremoso",
+        "precio": 75,
+        "foto": "../assets/past_1.png"
+    },
+    {
+        "id": "past_2",
+        "nombre": "Brownie",
+        "categoria": "pasteleria",
+        "descripcion": "Brownie casero y chocolatoso",
+        "precio": 45,
+        "foto": "../assets/past_2.png"
+    },
+    {
+        "id": "past_3",
+        "nombre": "Croissant de chocolate",
+        "categoria": "pasteleria",
+        "descripcion": "Croissant crujiente con relleno de chocolate",
+        "precio": 45,
+        "foto": "../assets/past_3.png"
+    },
+    {
+        "id": "past_4",
+        "nombre": "Galleta con chispas",
+        "categoria": "pasteleria",
+        "descripcion": "Galleta suave con chispas de chocolate",
+        "precio": 30,
+        "foto": "../assets/past_4.png"
+    },
+    {
+        "id": "past_5",
+        "nombre": "Panqué de naranja",
+        "categoria": "pasteleria",
+        "descripcion": "Delicioso panqué de naranja con trocitos de nuez",
+        "precio": 65,
+        "foto": "../assets/past_5.png"
+    },
+    {
+        "id": "past_6",
+        "nombre": "Rol de canela",
+        "categoria": "pasteleria",
+        "descripcion": "Suave y esponjoso rol con el aroma irresistible de la canela",
+        "precio": 70,
+        "foto": "../assets/past_6.png"
+    }
+]

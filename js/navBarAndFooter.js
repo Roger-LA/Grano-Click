@@ -57,7 +57,7 @@ const footer = `
         </div>
         <div class="col-md-6 d-flex flex-column align-items-center align-items-md-end">
           <nav class="footer-links d-flex flex-column flex-md-row gap-2">
-            <a href="/html/contacto.html">Contáctanos</a>
+            <a href="./contacto.html">Contáctanos</a>
             <a href="#" class="disabled-link" tabindex="-1" aria-disabled="true">Aviso de Privacidad</a>
           </nav>
         </div>

@@ -76,6 +76,7 @@ let usPage = getPagePaths(page,"sobreNosotros.html");
 let contactoPage = getPagePaths(page,"contacto.html");
 let productPage = getPagePaths(page,"productos.html")
 let logPage = getPagePaths(page, "login.html");
+let signPage = getPagePaths(page, "signin.html");
 
 const navBar = `
   <nav class="navbar navbar-dark navbar-expand-lg mt-2">
@@ -108,7 +109,7 @@ const navBar = `
                   <a class="nav-link" href="${logPage}">Iniciar sesión</a>
                 </li>
                 <li class="nav-item me-3">
-                  <a class="nav-link" href="/registro.html">Registrarse</a>
+                  <a class="nav-link" href="${signPage}">Registrarse</a>
                 </li>
                 <li class="nav-item" id="carrito">
                   <a class="btn" href="/carrito.html" role="button">

@@ -375,7 +375,7 @@ padding: 10px 15px;
   color: var(--bgColor);
 }
 /* BOTON ANIMADO LOGIN*/
-.Btn {
+.Btn,.Btn2 {
   margin-top: 1rem;
   margin-bottom: 0.5rem;
   width: 15.5rem;
@@ -426,6 +426,41 @@ padding: 10px 15px;
 .Btn:active {
   transform: translate(5px,5px);
   transition-duration: .3s;
+}
+.Btn2::before {
+  width: 15.5rem;
+  height: 2.3rem;
+  position: absolute;
+  content: "";
+  background-color: var(--secondaryColor);
+  border-radius: 0.5rem;
+  right: -100%;
+  top: 0;
+  transition-duration: .3s;
+  mix-blend-mode: difference;
+}
+
+.Btn2:hover::before {
+  transition-duration: .3s;
+  transform: translate(-100%,0);
+  border-radius: 0.1rem;
+}
+.Btn2:active {
+  transform: translate(50px,50px);
+  transition-duration: .3s;
+}
+
+/*============== Form Registro nuevo usuario*/
+.form-signin{
+  background-color: var(--primaryColor);
+  border: 1px solid var(--hgColor);
+  border-radius: 1rem;
+  box-shadow: -0.7rem 1rem 1rem -0.12rem black;
+  max-width: 45rem;
+  height: 30rem;
+  padding-top: 2rem;
+  padding-left: 4rem;
+  margin-bottom: 5rem;
 }
 
 #footer-container {

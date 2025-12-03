@@ -340,11 +340,12 @@ body {
 
 .nav-link {
   color: var(--textColor);
+  font-weight: 600;
 }
 
 .nav-link:hover {
   color: var(--hgColor);
-  font-weight: bolder;
+  font-weight: 600;
 }
 
 #carrito,

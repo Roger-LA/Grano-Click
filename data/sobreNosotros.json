@@ -21,7 +21,7 @@
         "foto": "../assets/5.ErickFoto.png",
         "nombre": "Erick Valencia",
         "rol": "Desarrollador full stack",
-        "biografia": "Desarrollador web e Ingeniero en Sistemas, apasionado por la tecnología y el aprendizaje continuo. Con experiencia en desarrollo web, bases de datos y soporte técnico, participante de proyectos retadores. Se caracteriza por su curiosidad, responsabilidad y capacidad de trabajo en equipo, siempre dispuesto a enfrentar nuevos retos."
+        "biografia": "Soy desarrollador e Ingeniero en Sistemas, apasionado por la tecnología y el aprendizaje continuo. Con experiencia en desarrollo web, bases de datos y soporte técnico, he participado en proyectos retadores. Me caracterizo por mi curiosidad, responsabilidad y capacidad de trabajo en equipo, siempre estoy dispuesto a enfrentar nuevos retos."
     },
    {
         "foto": "../assets/1.BrendaFoto.png",
@@ -33,6 +33,6 @@
         "foto": "../assets/6.RogelioFoto.png",
         "nombre": "Rogelio Luis",
         "rol": "Desarrollador full stack",
-        "biografia": "MI filosofía de vida: nunca dejar de aprender.Me formé como Ingeniero Mecánico y Eléctrico, pero mi pasión por los retos me llevó a pivotar hacia la Ciencia de Datos y el Desarrollo Full Stack. Disfruto profundamente enfrentar nuevos desafíos y siempre busco el camino más innovador para optimizar procesos."
+        "biografia": "MI filosofía de vida: nunca dejar de aprender. Me formé como Ingeniero Mecánico y Eléctrico, pero mi pasión por los retos me llevó a pivotar hacia la Ciencia de Datos y el Desarrollo Full Stack. Disfruto profundamente enfrentar nuevos desafíos y siempre busco el camino más innovador para optimizar procesos."
     }
 ]

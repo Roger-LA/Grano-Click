@@ -354,11 +354,78 @@ a#carrito {
   color: black;
   box-shadow: 0 0.3rem 0.5rem -0.12rem black;
 }
-
+/* Formulario Login*/
 .form-login{
   background-color: var(--primaryColor);
   border: 1px solid var(--hgColor);
   border-radius: 1rem;
+  box-shadow: -0.7rem 1rem 1rem -0.12rem black;
+  max-width: 20rem;
+  height: 19rem;
+  padding: 2rem;
+}
+.frminp {
+border-radius: 0.4rem;
+width: 15.5rem;
+height: 2.3rem;
+padding: 10px 15px;
+}
+
+.frminp::placeholder{
+  color: var(--bgColor);
+}
+/* BOTON ANIMADO LOGIN*/
+.Btn {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  width: 15.5rem;
+  height: 2.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--hgColor);
+  border: none;
+  border-radius: 0.5rem;
+  color: var(--primaryColor);
+  font-weight: 600;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.103);
+  position: relative;
+  overflow: hidden;
+  transition-duration: .3s;  
+}
+
+.svgIcon {
+  width: 1.3rem;
+}
+
+.svgIcon path {
+  fill: var(--primaryColor);
+}
+
+.Btn::before {
+  width: 15.5rem;
+  height: 2.3rem;
+  position: absolute;
+  content: "";
+  background-color: var(--secondaryColor);
+  border-radius: 0.5rem;
+  left: -100%;
+  top: 0;
+  transition-duration: .3s;
+  mix-blend-mode: difference;
+}
+
+.Btn:hover::before {
+  transition-duration: .3s;
+  transform: translate(100%,0);
+  border-radius: 0.1rem;
+}
+
+.Btn:active {
+  transform: translate(5px,5px);
+  transition-duration: .3s;
 }
 
 #footer-container {

@@ -75,6 +75,7 @@ let indexPage = getPagePaths(page,"index.html");
 let usPage = getPagePaths(page,"sobreNosotros.html");
 let contactoPage = getPagePaths(page,"contacto.html");
 let productPage = getPagePaths(page,"productos.html")
+let logPage = getPagePaths(page, "login.html");
 
 const navBar = `
   <nav class="navbar navbar-dark navbar-expand-lg mt-2">

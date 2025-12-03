@@ -12,7 +12,6 @@ html {
 }
 
 body {
-  /* Gradiente de fondo */
   font-family: 'Outfit', sans-serif;
   background: linear-gradient(90deg, var(--secondaryColor) 0%, var(--bgColor) 100%);
   min-height: 100vh;
@@ -22,8 +21,7 @@ body {
 }
 
 .main-wrapper {
-  max-width: 1200px;
-  /* Ancho máximo para desktop grande */
+  max-width: 75rem;
 }
 
 /* ------------------------------
@@ -35,20 +33,17 @@ body {
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   align-items: stretch;
-  max-width: 1300px;
+  max-width: 81.25rem;
   margin: 0 auto;
 }
 
 .hero-card {
-  height: 625px;
+  height: 39.063rem;
   width: 100%;
-  border-radius: 20px;
+  border-radius: 1.25rem;
   overflow: hidden;
-  /* Para que nada se salga de los bordes redondeados */
   position: relative;
-  /* Necesario para posicionar elementos dentro */
-  box-shadow: 0 10px 20px #011C40;
-  /* Sombra suave para dar profundidad */
+  box-shadow: 0 0.625rem 1.25rem #011C40;
 }
 
 .hero-card img {
@@ -85,8 +80,8 @@ body {
 /* TITULO GRANO & CLICK */
 .brand-title {
   color: var(--color-light);
-  font-weight: 700;
-  letter-spacing: 2px;
+  font-weight: 43.75rem;
+  letter-spacing: 0.125rem;
   text-transform: uppercase;
 }
 
@@ -105,7 +100,7 @@ body {
 .section-title-container h2 {
   font-size: 3rem;
   color: var(--color-light);
-  font-weight: 600;
+  font-weight: 37.5rem;
   margin-bottom: 1.5rem;
   line-height: 1.2;
 }
@@ -115,8 +110,8 @@ body {
    ------------------------------ */
 .products-container {
   background: linear-gradient(135deg, var(--bgColor) 0%, var(--secondaryColor) 100%);
-  border-radius: 20px 100px 20px 20px;
-  box-shadow: 0 10px 30px #011C40;
+  border-radius: 1.25rem 6.25rem 1.25rem 1.25rem;
+  box-shadow: 0 0.625rem 1.875rem #011C40;
 }
 
 .products-layout {
@@ -150,7 +145,7 @@ body {
   height: 100px;
   border-radius: 20%;
   object-fit: cover !important;
-  box-shadow: 0 4px 15px #011C40;
+  box-shadow: 0 0.25rem 0.938rem #011C40;
   border: 2px solid var(--color-light);
 }
 
@@ -172,15 +167,12 @@ body {
   background-color: var(--color-light);
   color: var(--primaryColor);
   font-size: 1rem;
-  /* Ajustado ligeramente */
-  font-weight: 600;
-  border-radius: 50px;
-  /* Pill shape */
+  font-weight: 37.5rem;
+  border-radius: 3.125rem;
   padding: 0.5rem 1.5rem;
   border: none;
   transition: transform 0.2s, background-color 0.2s;
-  /* Requerimiento táctil */
-  min-height: 44px;
+  min-height: 2.75rem;
 }
 
 .btn-details:hover {
@@ -202,7 +194,7 @@ body {
   height: 255px;
   object-fit: cover !important;
   border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0.5rem 1.25rem #011C40;
 }
 
 /* ------------------------------
@@ -217,15 +209,15 @@ body {
     gap: 0 !important;
     position: relative;
     height: 100%;
-    min-height: 500px;
+    min-height: 31.25rem;
   }
 
   .hero-card {
     grid-column: 1 / 2 !important;
     grid-row: 1 / 2 !important;
     height: auto !important;
-    min-height: 500px;
-    border-radius: 20px;
+    min-height: 31.25rem;
+    border-radius: 1.25rem;
     position: relative;
     box-shadow: none;
   }
@@ -233,7 +225,7 @@ body {
   .hero-card img {
     height: 100%;
     object-fit: cover !important;
-    position: absolute; /* Permite que el texto se superponga */
+    position: absolute;
     top: 0;
     left: 0;
   }
@@ -241,50 +233,48 @@ body {
   /* --- TARJETA CENTRAL (TEXTO): ORDEN Y ESTILO --- */
 
   .hero-center {
-    z-index: 5; /* La tarjeta central debe ir encima de todo (z-index) */
+    z-index: 5;
     background-image: none !important;
-    background-color: rgba(38, 101, 140, 0.7) !important;
-    backdrop-filter: blur(2px) !important; /* Añadimos un ligero desenfoque para mejor legibilidad */
+    background-color: rgba(38, 101, 140, 0.4) !important;
+    backdrop-filter: blur(0.125rem) !important;
     padding: 3rem 1.5rem !important;
-    display: flex; /* Asegura el centrado del contenido */
+    display: flex;
     align-items: center;
     justify-content: center;
   }
-  
+
   /* El contenido de texto debe ser relativo para interactuar con el z-index */
   .content-relative {
-      position: relative;
-      z-index: 10;
+    position: relative;
+    z-index: 10;
   }
 
   /* --- IMÁGENES LATERALES: EFECTO DE CORTINA / MÁSCARA --- */
-  
-  .hero-left, .hero-right {
-    z-index: 1; /* Detrás del texto central */
-    /* Ajustes para el efecto de transparencia simulada */
+
+  .hero-left,
+  .hero-right {
+    z-index: 1;
     clip-path: none !important;
   }
-  
+
   .hero-left img {
-      /* Imagen de la izquierda se vea a la izquierda del texto central */
-      clip-path: polygon(0 0, 40% 0, 40% 100%, 0 100%);
+    clip-path: polygon(0 0, 40% 0, 40% 100%, 0 100%);
   }
 
   .hero-right img {
-      /* Imagen de la derecha se vea a la derecha del texto central */
-      clip-path: polygon(60% 0, 100% 0, 100% 100%, 60% 100%);
+    clip-path: polygon(60% 0, 100% 0, 100% 100%, 60% 100%);
   }
-  
+
   .section-title-container h2 {
-    font-size: 2rem; 
+    font-size: 2rem;
     text-align: center;
   }
-  
+
   .products-layout {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .small-products-group {
     justify-content: center;
   }
@@ -296,15 +286,15 @@ body {
   }
 }
 
-/* Para pantallas aún más pequeñas, ajustamos el clipping para más espacio al texto */
-@media (max-width: 576px) {
-    .hero-left img {
-        clip-path: polygon(0 0, 30% 0, 30% 100%, 0 100%);
-    }
 
-    .hero-right img {
-        clip-path: polygon(70% 0, 100% 0, 100% 100%, 70% 100%);
-    }
+@media (max-width: 576px) {
+  .hero-left img {
+    clip-path: polygon(0 0, 30% 0, 30% 100%, 0 100%);
+  }
+
+  .hero-right img {
+    clip-path: polygon(70% 0, 100% 0, 100% 100%, 70% 100%);
+  }
 }
 
 /* ------------------------------
@@ -323,7 +313,7 @@ body {
   border-radius: 2rem;
   box-shadow: 0 0.3rem 0.5rem -0.12rem black;
   font-family: var(--mainFamilyFont);
-  
+
 }
 
 .navbar-toggler {
@@ -367,7 +357,6 @@ a#carrito {
 
 #footer-container {
   flex-shrink: 0;
-  /* No dejes que el footer se aplaste */
   width: 100%;
 }
 
@@ -415,6 +404,3 @@ a#carrito {
     align-items: center;
   }
 }
-
-
-

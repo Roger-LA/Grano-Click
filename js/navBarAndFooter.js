@@ -1,5 +1,5 @@
 /*  Se necesita que en el html la pagina tenga un id en el primer div, con el con un nombre relativo a la pagina en la que se esta
-por ejemplo
+por ejemplo  
 <div class="container" id ="aboutUsHere">
 
 */
@@ -15,7 +15,7 @@ function putHTML(place, textToPut,msg) {
 
 function getIconPath(page,iconName){
 
-
+    
     let path = "";
     if (page.id ==="indexHere") {
         path = `./assets/${iconName}`
@@ -25,7 +25,7 @@ function getIconPath(page,iconName){
     return path;
 }
 function getPagePaths(page,element){
-
+    
     let path = "";
     if ((page.id ==="indexHere"  && element ==="index.html") || (page.id !=="indexHere" && element !=="index.html")) {
         path = `./${element}`
@@ -34,23 +34,24 @@ function getPagePaths(page,element){
     }else if(page.id =="indexHere" && element !=="index.html"){
         path = `./html/${element}`
     }
-
-
+    
+    
     return path;
 }
 
 
 function buildFooter(page){
 let iconPath = getIconPath(page,"LogoFooter.png");
+let contactoPage = getPagePaths(page,"contacto.html");
 const footer = `
   <footer class="footer-gradient py-3">
     <div class="container">
       <div class="row align-items-center flex-column flex-md-row text-center text-md-start">
         <div class="col-md-6 mb-3 mb-md-0 d-flex flex-column align-items-center align-items-md-start">
-          <a href="#" class="footer-brand" aria-label="Grano & Click">
-            <img src="\${iconPath}" alt="LogoFooter" height="35">
-          <a href="/index.html" class="footer-brand" aria-label="Grano & Click">
-            <img src="\${iconPath}" alt="LogoFooter" height="35"> 
+          <a href="${contactoPage}" class="footer-brand" aria-label="Grano & Click">
+
+            <img src="${iconPath}" alt="LogoFooter" height="35">
+
           </a>
           <div class="footer-copyright">© <span id="footer-year">2025</span> Todos los derechos reservados.</div>
         </div>
@@ -68,33 +69,30 @@ const footer = `
 }
 
 function buildNavBar(page){
-let iconPath = getIconPath(page,"LogoBien.png");
+let iconPath = getIconPath(page,"LogoBien.png"); 
 let indexPage = getPagePaths(page,"index.html");
 let usPage = getPagePaths(page,"sobreNosotros.html");
 let contactoPage = getPagePaths(page,"contacto.html");
-
-console.log(indexPage);
-console.log(usPage);
-console.log(contactoPage);
+let productPage = getPagePaths(page,"productos.html")
 
 const navBar = `
   <nav class="navbar navbar-dark navbar-expand-lg mt-2">
           <div class="container" id="navBar">
-            <a class="navbar-brand" href="${indexPage}">
+            <a class="navbar-brand" href="${indexPage}"> 
               <img src="${iconPath}" alt="Logo" height="35" />
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
               data-bs-target="#mainNavbarContent" aria-controls="mainNavbarContent"
               aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
-            </button>
+            </button> 
             <div class="collapse navbar-collapse" id="mainNavbarContent">
               <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                   <a class="nav-link" href="${indexPage}">Inicio </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="/productos.html">Productos</a>
+                  <a class="nav-link" href="${productPage}">Productos</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="${contactoPage}">Contáctanos</a>
@@ -131,6 +129,4 @@ window.addEventListener("load", function () {
   let page = document.querySelector("div");
   buildFooter(page);
   buildNavBar(page);
-
-
 });

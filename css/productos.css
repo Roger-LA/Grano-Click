@@ -38,26 +38,27 @@ h1 {
 }
 
 .carousel-item img {
-max-height: 60rem;
-max-width: 60rem;
- 
+  max-height: 60rem;
+  max-width: 60rem;
+
 }
 
 
 .category-divider {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
-  padding-left: 15px;
-  padding-right: 15px;
+  margin-bottom: 1.25rem;
+  padding-left: 0.93rem;
+  padding-right: 0.93rem;
   width: 100%;
 }
+
 
 .category-title {
   font-family: 'Outfit', sans-serif;
   font-size: 1.8em;
   color: var(--fouthColor);
-  margin-right: 20px;
+  margin-right: 0.85rem;
   white-space: nowrap;
   text-shadow: 0 0 3rem var(--primaryColor);
 }

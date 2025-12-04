@@ -3,6 +3,69 @@ let cafeData = [];
 const cardsPostre = document.getElementById("cardsPostre");
 let postreData = [];
 
+const inpBuscar = document.getElementById("search-input");
+const btnBuscar = document.getElementById("btnSearch");
+const cafeTitulo = document.getElementById("coffeTitle");
+const resulTitulo = document.getElementById("resultsTitle");
+const pastelTitulo = document.getElementById("pastryTitle");
+const noEncontrado = document.getElementById("notFound");
+let contProducts = 0;
+let listaDeCompras ={};
+
+
+function recuperarTarjetas() {
+  if (inpBuscar.value.trim() === "") {
+    cafeTitulo.style.display = "";
+    pastelTitulo.style.display = "";
+    resulTitulo.style.display = "none";
+    noEncontrado.style.display = "none";
+    const tarjetas = document.querySelectorAll(".allCards > .col");
+
+    tarjetas.forEach((tarjeta) => {
+      tarjeta.style.display = "";
+    });
+  }
+}
+
+function searchText() {
+  const textoBusqueda = inpBuscar.value.toLowerCase().trim();
+  
+  
+  const palabrasBusqueda = textoBusqueda.split(/\s+/);
+  let encontrados = false;
+
+  if (textoBusqueda !== "") {
+    
+    cafeTitulo.style.display = "none";
+    pastelTitulo.style.display = "none";
+    resulTitulo.style.display = "";
+    const tarjetas = document.querySelectorAll(".allCards > .col");
+
+    tarjetas.forEach((tarjeta) => {
+      const tituloTarjeta = tarjeta.querySelector(".card-title");
+      if (tituloTarjeta) {
+        const tituloProducto = tituloTarjeta.textContent.toLowerCase();
+        const palabrasProducto = tituloProducto.split(/\s+/);
+        const encuentra = palabrasBusqueda.some((pcomunes) =>
+          palabrasProducto.includes(pcomunes)
+        );
+
+        if (encuentra) {
+          tarjeta.style.display = "";
+          encontrados = true;
+        } else {
+          tarjeta.style.display = "none";
+        }
+      }
+    });
+    noEncontrado.style.display = encontrados ? "none" : "";
+  }
+}
+btnBuscar.addEventListener("click", function (event) {
+  event.preventDefault();
+  searchText();
+});
+
 function getProductos() {
   fetch("../data/productos.json")
     .then((res) => res.json())
@@ -23,11 +86,6 @@ function getInfo(id) {
   return cafeData[index] || null;
 } //getInfo
 
-function getInfo(id) {
-  const index = parseInt(id.replace("info", ""), 10) - 1;
-  return postreData[index] || null;
-} //getInfo
-
 function createCards(data) {
   let card = ``;
 
@@ -40,9 +98,9 @@ function createCards(data) {
         
         <div class="product-info-card">
           <div class="card-body">
-            <h5 class="card-title">${product.nombre}</h5>
+            <h5 class="card-title" id="nombre-${product.id}">${product.nombre}</h5>
             <p class="card-text">${product.descripcion}</p>
-            <p class="card-price">$${product.precio}</p>
+            <p class="card-price" id="precio-${product.id}">$${product.precio} MXN</p>
           </div>
 
           <div class="input-group product-quantity-control">
@@ -86,12 +144,36 @@ window.addEventListener("load", function (event) {
   getProductos();
 });
 
+function cambiarLista(nombre, precio, cantidad) {
+    let encontrado = false;
+  for (const key in listaDeCompras) {
+    if (listaDeCompras[key].nombre === nombre) {
+      const nuevaCantidad = Number(cantidad); // conversión segura
+      listaDeCompras[key].cantidad = nuevaCantidad;
+
+      if (nuevaCantidad === 0) {
+        delete listaDeCompras[key];   
+      } 
+      encontrado = true;
+      break;
+    }
+  }
+  if (!encontrado) {
+    listaDeCompras[++contProducts] = { "nombre":nombre,"precio": precio, "cantidad":Number(cantidad) };
+  
+  }
+
+localStorage.setItem("products",JSON.stringify(listaDeCompras));
+}
 document.addEventListener("click", (e) => {
   const btnSuma = e.target.closest(".btn-agregar");
   if (btnSuma) {
     const id = btnSuma.dataset.id;
     const input = document.getElementById(`contador-${id}`);
+    const name = document.getElementById(`nombre-${id}`);
+    const price = document.getElementById(`precio-${id}`);
     input.value = parseInt(input.value) + 1;
+    cambiarLista(name.textContent,price.textContent,input.value);
     return;
   }
 
@@ -99,10 +181,20 @@ document.addEventListener("click", (e) => {
   if (btnResta) {
     const id = btnResta.dataset.id;
     const input = document.getElementById(`contador-${id}`);
+    const name = document.getElementById(`nombre-${id}`);
+    const price = document.getElementById(`precio-${id}`);
     const cantidadActual = parseInt(input.value);
+        
 
     if (cantidadActual > 0) {
       input.value = cantidadActual - 1;
+      cambiarLista(name.textContent,price.textContent,input.value);
     }
   }
+
+  if (inpBuscar) {
+    inpBuscar.addEventListener("input", recuperarTarjetas);
+  } 
+
 });
+

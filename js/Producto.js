@@ -1,5 +1,7 @@
 const cards_cafe = document.getElementById("cards_cafe");
 let cafeData = [];
+const cardsPostre = document.getElementById("cardsPostre");
+let postreData = [];
 
 function getProductos() {
   fetch("../data/productos.json")
@@ -7,6 +9,9 @@ function getProductos() {
     .then((data) => {
       cafeData = data.filter((item) => item.categoria === "cafe");
       cards_cafe.insertAdjacentHTML("beforeend", createCards(cafeData));
+
+        postreData = data.filter((item) => item.categoria === "pasteleria");
+      cardsPostre.insertAdjacentHTML("beforeend", createCards(postreData));
     })
     .catch((error) => {
       console.log(error.message);
@@ -16,6 +21,11 @@ function getProductos() {
 function getInfo(id) {
   const index = parseInt(id.replace("info", ""), 10) - 1;
   return cafeData[index] || null;
+} //getInfo
+
+function getInfo(id) {
+  const index = parseInt(id.replace("info", ""), 10) - 1;
+  return postreData[index] || null;
 } //getInfo
 
 function createCards(data) {

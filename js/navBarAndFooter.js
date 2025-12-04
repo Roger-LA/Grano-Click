@@ -83,7 +83,6 @@ function buildFooter(page) {
 document.addEventListener("click", (e) => {
   const linkPrivacidad = e.target.closest(".info-aviso-privacidad");
   if (!linkPrivacidad) return;
-
   e.preventDefault();
 
 
@@ -116,7 +115,7 @@ function avisoPrivacidad() {
         </ul>
     `,
     confirmButtonText: 'Cerrar',
-      confirmButton: 'btn btn-primary',
+    confirmButton: 'btn btn-primary',
     confirmButtonColor: '#63addfff',
     background: '#023859',
     color: '#ffffff'
@@ -130,6 +129,8 @@ function buildNavBar(page) {
   let usPage = getPagePaths(page, "sobreNosotros.html");
   let contactoPage = getPagePaths(page, "contacto.html");
   let productPage = getPagePaths(page, "productos.html")
+  let logPage = getPagePaths(page, "login.html");
+  let signPage = getPagePaths(page, "signin.html");
 
   const navBar = `
   <nav class="navbar navbar-dark navbar-expand-lg mt-2">
@@ -159,10 +160,10 @@ function buildNavBar(page) {
               </ul>
               <ul class="navbar-nav d-flex">
                 <li class="nav-item">
-                  <a class="nav-link" href="/inicioSesion.html">Iniciar sesión</a>
+                  <a class="nav-link" href="${logPage}">Iniciar sesión</a>
                 </li>
                 <li class="nav-item me-3">
-                  <a class="nav-link" href="/registro.html">Registrarse</a>
+                  <a class="nav-link" href="${signPage}">Registrarse</a>
                 </li>
                 <li class="nav-item" id="carrito">
                   <a class="btn" href="/carrito.html" role="button">

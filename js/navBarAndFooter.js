@@ -4,7 +4,7 @@ por ejemplo
 
 */
 
-function putHTML(place, textToPut,msg) {
+function putHTML(place, textToPut, msg) {
   let container = document.getElementById(place);
   if (container) {
     container.insertAdjacentHTML("beforeend", textToPut);
@@ -13,42 +13,52 @@ function putHTML(place, textToPut,msg) {
   }
 }
 
-function getIconPath(page,iconName){
+function getIconPath(page, iconName) {
 
-    
-    let path = "";
-    if (page.id ==="indexHere") {
-        path = `./assets/${iconName}`
-    }else{
-        path = `../assets/${iconName}`
-    }
-    return path;
+
+  let path = "";
+  if (page.id === "indexHere") {
+    path = `./assets/${iconName}`
+  } else {
+    path = `../assets/${iconName}`
+  }
+  return path;
 }
-function getPagePaths(page,element){
-    
-    let path = "";
-    if ((page.id ==="indexHere"  && element ==="index.html") || (page.id !=="indexHere" && element !=="index.html")) {
-        path = `./${element}`
-    }else if (page.id !=="indexHere" && element ==="index.html"){
-        path = `../${element}`
-    }else if(page.id =="indexHere" && element !=="index.html"){
-        path = `./html/${element}`
-    }
-    
-    
-    return path;
+function getPagePaths(page, element) {
+
+  let path = "";
+  if ((page.id === "indexHere" && element === "index.html") || (page.id !== "indexHere" && element !== "index.html")) {
+    path = `./${element}`
+  } else if (page.id !== "indexHere" && element === "index.html") {
+    path = `../${element}`
+  } else if (page.id == "indexHere" && element !== "index.html") {
+    path = `./html/${element}`
+  }
+
+
+  return path;
 }
 
+function cargarSweetAlertCondicionalmente() {
+  if (typeof window.Swal === 'undefined' && typeof window.Swal2 === 'undefined') {
+    const script = document.createElement('script');
+    script.src = "https://cdn.jsdelivr.net/npm/sweetalert2@11";
+    document.head.appendChild(script);
+    console.log("SweetAlert2 CDN inyectado directamente para asegurar la carga.");
+  }
+}
 
-function buildFooter(page){
-let iconPath = getIconPath(page,"LogoFooter.png");
-let contactoPage = getPagePaths(page,"contacto.html");
-const footer = `
+function buildFooter(page) {
+  let indexPage = getPagePaths(page, "index.html");
+  let iconPath = getIconPath(page, "LogoFooter.png");
+  let contactoPage = getPagePaths(page, "contacto.html");
+  cargarSweetAlertCondicionalmente();
+  const footer = `
   <footer class="footer-gradient py-3">
     <div class="container">
       <div class="row align-items-center flex-column flex-md-row text-center text-md-start">
         <div class="col-md-6 mb-3 mb-md-0 d-flex flex-column align-items-center align-items-md-start">
-          <a href="${contactoPage}" class="footer-brand" aria-label="Grano & Click">
+          <a href="${indexPage}" class="footer-brand" aria-label="Grano & Click">
 
             <img src="${iconPath}" alt="LogoFooter" height="35">
 
@@ -56,26 +66,72 @@ const footer = `
           <div class="footer-copyright">© <span id="footer-year">2025</span> Todos los derechos reservados.</div>
         </div>
         <div class="col-md-6 d-flex flex-column align-items-center align-items-md-end">
-          <nav class="footer-links d-flex flex-column flex-md-row gap-2">
-            <a href="./contacto.html">Contáctanos</a>
-            <a href="#" class="disabled-link" tabindex="-1" aria-disabled="true">Aviso de Privacidad</a>
-          </nav>
+          <nav class="footer-links d-flex flex-column flex-md-row gap-2" id= "footer-nav">
+            <a href="${contactoPage}">Contáctanos</a>
+          <a href="#" class="info-aviso-privacidad">Aviso de Privacidad</a>
+            </nav>
         </div>
       </div>
     </div>
   </footer>
 `;
+
   putHTML("footer-container", footer, "Error: No encontré el div con id 'footer-container'");
+
 }
 
-function buildNavBar(page){
-let iconPath = getIconPath(page,"LogoBien.png"); 
-let indexPage = getPagePaths(page,"index.html");
-let usPage = getPagePaths(page,"sobreNosotros.html");
-let contactoPage = getPagePaths(page,"contacto.html");
-let productPage = getPagePaths(page,"productos.html")
+document.addEventListener("click", (e) => {
+  const linkPrivacidad = e.target.closest(".info-aviso-privacidad");
+  if (!linkPrivacidad) return;
 
-const navBar = `
+  e.preventDefault();
+
+
+  if (typeof Swal === 'undefined') {
+    // Si el usuario hace clic antes de que el CDN cargue, muestra una alerta simple.
+    console.error('SweetAlert2 aún no está cargado. Intente de nuevo en un momento.');
+    alert('Aviso de Privacidad en revisión. Disponible pronto.');
+    return;
+  }
+
+  avisoPrivacidad();
+});
+
+
+/*Aviso de Privacidad */
+function avisoPrivacidad() {
+
+  // Sweetalert
+  Swal.fire({
+    title: '🔒 Aviso de Privacidad',
+    html: `
+        <p style="text-align: left;">
+            <strong>Grano & Click</strong> es responsable de la privacidad de sus datos. 
+            Recabamos datos de identificación, contacto y de entrega para:
+        </p>
+        <ul style="text-align: left; margin-bottom: 15px;">
+            <li>Procesar y entregar sus pedidos.</li>
+            <li>Gestionar su facturación.</li>
+            <li>Fines de marketing (si lo acepta).</li>
+        </ul>
+    `,
+    confirmButtonText: 'Cerrar',
+      confirmButton: 'btn btn-primary',
+    confirmButtonColor: '#63addfff',
+    background: '#023859',
+    color: '#ffffff'
+  });
+}
+
+
+function buildNavBar(page) {
+  let iconPath = getIconPath(page, "LogoBien.png");
+  let indexPage = getPagePaths(page, "index.html");
+  let usPage = getPagePaths(page, "sobreNosotros.html");
+  let contactoPage = getPagePaths(page, "contacto.html");
+  let productPage = getPagePaths(page, "productos.html")
+
+  const navBar = `
   <nav class="navbar navbar-dark navbar-expand-lg mt-2">
           <div class="container" id="navBar">
             <a class="navbar-brand" href="${indexPage}"> 

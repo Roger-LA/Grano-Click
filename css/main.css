@@ -11,6 +11,7 @@ html {
 
 }
 
+
 body {
   font-family: 'Outfit', sans-serif;
   background: linear-gradient(90deg, var(--secondaryColor) 0%, var(--bgColor) 100%);
@@ -18,6 +19,13 @@ body {
   color: var(--textColor);
   margin: 0;
   padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex-grow: 1;
 }
 
 .main-wrapper {
@@ -355,8 +363,9 @@ a#carrito {
   color: black;
   box-shadow: 0 0.3rem 0.5rem -0.12rem black;
 }
+
 /* Formulario Login*/
-.form-login{
+.form-login {
   background-color: var(--primaryColor);
   border: 1px solid var(--hgColor);
   border-radius: 1rem;
@@ -365,18 +374,21 @@ a#carrito {
   height: 19rem;
   padding: 2rem;
 }
+
 .frminp {
-border-radius: 0.4rem;
-width: 15.5rem;
-height: 2.3rem;
-padding: 10px 15px;
+  border-radius: 0.4rem;
+  width: 15.5rem;
+  height: 2.3rem;
+  padding: 10px 15px;
 }
 
-.frminp::placeholder{
+.frminp::placeholder {
   color: var(--bgColor);
 }
+
 /* BOTON ANIMADO LOGIN*/
-.Btn,.Btn2 {
+.Btn,
+.Btn2 {
   margin-top: 1rem;
   margin-bottom: 0.5rem;
   width: 15.5rem;
@@ -394,7 +406,7 @@ padding: 10px 15px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.103);
   position: relative;
   overflow: hidden;
-  transition-duration: .3s;  
+  transition-duration: .3s;
 }
 
 .svgIcon {
@@ -420,14 +432,15 @@ padding: 10px 15px;
 
 .Btn:hover::before {
   transition-duration: .3s;
-  transform: translate(100%,0);
+  transform: translate(100%, 0);
   border-radius: 0.1rem;
 }
 
 .Btn:active {
-  transform: translate(5px,5px);
+  transform: translate(5px, 5px);
   transition-duration: .3s;
 }
+
 .Btn2::before {
   width: 15.5rem;
   height: 2.3rem;
@@ -443,16 +456,17 @@ padding: 10px 15px;
 
 .Btn2:hover::before {
   transition-duration: .3s;
-  transform: translate(-100%,0);
+  transform: translate(-100%, 0);
   border-radius: 0.1rem;
 }
+
 .Btn2:active {
-  transform: translate(50px,50px);
+  transform: translate(50px, 50px);
   transition-duration: .3s;
 }
 
 /*============== Form Registro nuevo usuario*/
-.form-signin{
+.form-signin {
   background-color: var(--primaryColor);
   border: 1px solid var(--hgColor);
   border-radius: 1rem;

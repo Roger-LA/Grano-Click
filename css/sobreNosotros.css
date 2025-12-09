@@ -225,40 +225,34 @@ div.team-card:hover {
 }
 
 /* SemiFoot */
-#semiFootContainer {
-  min-height: 22rem;
-  color: var(--textColor);
-  padding: 2.5rem 1rem;
+.image-overlay-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 0; 
 }
+
 .semifoot {
-  width: 100%;
-  max-width: 33.75rem;
-  display: block;
-  margin: 0 auto;
-  object-fit: cover;
-  border-radius: 0.75rem;
-  box-shadow: 0 0.75rem 1.5rem var(--primaryColor);
+    width: 100%;
+    max-height: 25rem;
+    display: block;
+    margin: 0 auto;
+    object-fit: cover;
+    border-radius: 0.75rem;
+    padding-bottom: 0;
+    margin-bottom: 0;
 }
-#semiFoot-text{
-  font-size: 1.1rem;
-}
-.semiFootp{
-  text-align: left;
-  margin-bottom: 0.8rem;
-}
-.semiFootp:last-child{
-  font-weight: 500;
-  margin-top: 1.25rem;
-}
-/* Semifoot responsivo */
-@media (max-width: 48rem){
-  #semiFootContainer{
+
+.overlay-text {
+    position: absolute;
+    top: 70%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    color: white; 
+    font-size: 1rem;
+    font-weight: bold;
     text-align: center;
-  }
-  .semiFootp{
-    text-align: center;
-  }
-  #semiFoot-text{
-    margin-top: 1.5rem;
-  }
+    width: 80%;
+    text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.8), 
+                 0px 0px 4px rgba(0, 0, 0, 0.8);
 }
+

@@ -1,5 +1,17 @@
-/* Inputs (móvil) */
+.contact-img-element {
+    width: 80%;
+    object-fit: cover;
+    display: block;
+}
 
+.contact-img {
+    padding-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 2rem;
+    padding-left: 5rem;
+}
 
 .custom-input {
     background: beige;

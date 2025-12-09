@@ -111,12 +111,14 @@ function avisoPrivacidad() {
         <ul style="text-align: left; margin-bottom: 15px;">
             <li>Procesar y entregar sus pedidos.</li>
             <li>Gestionar su facturación.</li>
-            <li>Fines de marketing (si lo acepta).</li>
+            <li>Fines de marketing.</li>
         </ul>
     `,
     confirmButtonText: 'Cerrar',
-    confirmButton: 'btn btn-primary',
     confirmButtonColor: '#63addfff',
+    customClass: {
+      confirmButton: 'btn btn-primary'
+    },
     background: '#023859',
     color: '#ffffff'
   });

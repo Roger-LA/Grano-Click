@@ -11,44 +11,47 @@ html {
 
 }
 
+
+
 /*Encabezado*/
 h1 {
   font-family: var(--title_font);
-  font-size: 3.5rem;
+  font-size: 5rem;
   text-align: center;
   color: var(--hgColor);
   font-weight: 600;
   text-shadow: none;
   padding-top: 1rem;
-  padding-bottom: 1rem;
-  text-shadow:0 0 1rem var(--textColor), 
-    0 0 2rem var(--primaryColor),  
-    0 0 2rem var(--bgColor), 
-    0 0 3rem var(--color-light), 
+  text-shadow: 0 0 1rem var(--textColor),
+    0 0 2rem var(--primaryColor),
+    0 0 2rem var(--bgColor),
+    0 0 3rem var(--color-light),
     0 0 4rem var(--hgColor);
 }
 
 /*Carrusel*/
-.carousel-item img {
+
+.carousel-inner {
   border-radius: 2rem;
-
+    overflow: hidden;
+    width: 70% ;
+    margin: 0 auto;
 }
-
 
 .category-divider {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
-  padding-left: 15px;
-  padding-right: 15px;
-  width: 100%;
+  margin-bottom: 1.25rem;
+  padding-left: 0.93rem;
+  padding-right: 0.93rem;
 }
+
 
 .category-title {
   font-family: 'Outfit', sans-serif;
   font-size: 1.8em;
   color: var(--fouthColor);
-  margin-right: 20px;
+  margin-right: 0.85rem;
   white-space: nowrap;
   text-shadow: 0 0 3rem var(--primaryColor);
 }
@@ -70,6 +73,7 @@ h1 {
   height: 10px;
   background-color: var(--textColor);
 }
+
 
 
 /*Cards*/
@@ -106,7 +110,7 @@ h1 {
   width: 100%;
   margin: 0 auto;
   border-radius: 1rem;
-  background-image: url(../assets/Producto/Fondo_Cards.png); 
+  background-image: url(../assets/Producto/Fondo_Cards.png);
 }
 
 .product-info-card .card-title {
@@ -186,51 +190,56 @@ h1 {
 }
 
 .product-quantity-control#btn-quitar {
-  border-bottom-right-radius:1rem;
+  border-bottom-right-radius: 1rem;
   border-top-right-radius: 1rem;
 
 }
+
 /*--- Estilo del buscador --- */
 #buscadorBody {
-    margin-top: 3rem !important;
-    margin-bottom: 3rem !important;
-}
-#buscadorBody form {
-    background-color: var(--primaryColor);
-    border-radius: 2.5rem;
-    padding: 0.3rem;
-    box-shadow: 0 0 10px var(--primaryColor);
-    border: 2px solid var(--fifthColor);
-}
-#search-input {
-    background-color: var(--textColor);
-    border: none;
-    border-radius: 2.5rem 0 0 2.5rem;
-    color: var(--primaryColor);
-    font-size: 1rem;
-    padding: 0.75rem 1.5rem;
-    flex-grow: 1;
-    margin-right: 0 !important;
-    font-weight: 500;
-}
-#search-input::placeholder {
-    color: var(--primaryColor);
-    opacity: 0.7;
-}
-#buscadorBody button[type="submit"] {
-    background-color: var(--fifthColor);
-    color: var(--textColor);
-    border: none;
-    font-weight: bold;
-    font-size: 1.1rem;
-    padding: 0.75rem 2rem;
-    border-radius: 0 2.5rem 2.5rem 0;
-    transition: 0.3s ease;
-    margin-left: -1px; 
-    box-shadow: inset -2px 0 0 0 var(--primaryColor);
-}
-#buscadorBody button[type="submit"]:hover {
-    background-color: var(--color-light);
-    color: var(--primaryColor);
+  margin-top: 3rem !important;
+  margin-bottom: 3rem !important;
 }
 
+#buscadorBody form {
+  background-color: var(--primaryColor);
+  border-radius: 2.5rem;
+  padding: 0.3rem;
+  box-shadow: 0 0 10px var(--primaryColor);
+  border: 2px solid var(--fifthColor);
+}
+
+#search-input {
+  background-color: var(--textColor);
+  border: none;
+  border-radius: 2.5rem 0 0 2.5rem;
+  color: var(--primaryColor);
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+  flex-grow: 1;
+  margin-right: 0 !important;
+  font-weight: 500;
+}
+
+#search-input::placeholder {
+  color: var(--primaryColor);
+  opacity: 0.7;
+}
+
+#buscadorBody button[type="submit"] {
+  background-color: var(--fifthColor);
+  color: var(--textColor);
+  border: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding: 0.75rem 2rem;
+  border-radius: 0 2.5rem 2.5rem 0;
+  transition: 0.3s ease;
+  margin-left: -1px;
+  box-shadow: inset -2px 0 0 0 var(--primaryColor);
+}
+
+#buscadorBody button[type="submit"]:hover {
+  background-color: var(--color-light);
+  color: var(--primaryColor);
+}

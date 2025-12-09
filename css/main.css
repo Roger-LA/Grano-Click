@@ -500,6 +500,28 @@ a#carrito {
 
 }
 
+/* ======================== Formulario para recuperar contraseña*/
+.form-recuperarContra {
+  background-color: var(--primaryColor);
+  border: 1px solid var(--hgColor);
+  border-radius: 1rem;
+  box-shadow: -0.7rem 1rem 1rem -0.12rem black;
+  max-width: 20rem;
+  height: 19rem;
+  padding: 2rem;}
+
+.frmNCin {
+  border-radius: 0.4rem;
+  width: 15.5rem;
+  height: 2.3rem;
+  padding: 10px 15px;
+}
+
+.frmNCin::placeholder {
+  color: var(--bgColor);
+}
+
+
 /*============== Form Registro nuevo usuario*/
 .form-signin {
   background-color: var(--primaryColor);

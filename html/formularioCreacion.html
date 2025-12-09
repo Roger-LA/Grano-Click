@@ -21,8 +21,8 @@
 
     <header class="page-header text-center">
         <div class="container">
-            <h1 class="display-5">Creación de Nuevo Producto</h1>
-            <p class="lead">Panel de Administración</p>
+            <h1 class="display-5">Creación de Nuevo Producto.</h1>
+            <p class="lead">Panel de Administración.</p>
         </div>
     </header>
 
@@ -37,7 +37,7 @@
                             <div class="col-md-7">
                                 <label for="productName" class="form-label">Nombre del Producto:</label>
                                 <input type="text" class="form-control" id="productName" name="nombre"
-                                    placeholder="Nombre del producto (Ej: Espresso)" required>
+                                    placeholder="Nombre del producto (Ej: Espresso)." required>
                             </div>
                             <div class="col-md-5">
                                 <label for="productCategory" class="form-label">Categoría:</label>
@@ -52,7 +52,7 @@
                         <div class="mb-3">
                             <label for="productDescription" class="form-label">Descripción:</label>
                             <textarea class="form-control" id="productDescription" name="descripcion" rows="3"
-                                placeholder="Descripción corta e intensa del producto" required></textarea>
+                                placeholder="Descripción corta del producto." required></textarea>
                         </div>
 
                         <div class="row mb-4">
@@ -71,22 +71,25 @@
 
                                     <span class="preview-note"></span>
                                 </div>
-                                <label for="productPhoto" class="form-label">Ruta de la Foto:</label>
-                                <input type="text" class="form-control" id="productPhoto" name="foto"
-                                    value="../assets/cafe_1.png">
-                            </div>
-                        </div>
+                                <div class="col-md-7">
+                                    <div class="mb-3">
+                                        <label for="productPhoto" class="form-label image-upload-label">
+                                            Sube tu imagen aquí.
+                                        </label>
+                                    </div>
+                                </div>
 
-                        <div class="d-grid gap-2">
-                            <button class="btn btn-submit" type="button" id="createProductBtn">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                                    class="bi bi-box-seam-fill me-2" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd"
-                                        d="M15.528 2.97a.75.75 0 0 0-.543-.199c-.655-.086-1.729-.214-2.822-.35-.762-.095-1.423-.178-1.92-.236a.498.498 0 0 0-.256-.058H2.036c-.464.004-.848.05-.851.053-.023.023-.01.076.01.12l.144.341c.094.223.468.598 1.157.973.64.349 1.348.694 2.19.985.807.277 1.258.468 1.673.606.398.134.792.239 1.157.323.275.064.498.1.727.126.39.052.79.083 1.189.083h.142c.164 0 .341-.02.502-.056.17-.035.337-.083.51-.144l2.058-.691a.5.5 0 0 0 .324-.316V3.064c.01-.12-.03-.23-.105-.348" />
-                                </svg>
-                                Crear Producto
-                            </button>
-                        </div>
+
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-submit" type="button" id="createProductBtn">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            fill="currentColor" class="bi bi-box-seam-fill me-2" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                d="M15.528 2.97a.75.75 0 0 0-.543-.199c-.655-.086-1.729-.214-2.822-.35-.762-.095-1.423-.178-1.92-.236a.498.498 0 0 0-.256-.058H2.036c-.464.004-.848.05-.851.053-.023.023-.01.076.01.12l.144.341c.094.223.468.598 1.157.973.64.349 1.348.694 2.19.985.807.277 1.258.468 1.673.606.398.134.792.239 1.157.323.275.064.498.1.727.126.39.052.79.083 1.189.083h.142c.164 0 .341-.02.502-.056.17-.035.337-.083.51-.144l2.058-.691a.5.5 0 0 0 .324-.316V3.064c.01-.12-.03-.23-.105-.348" />
+                                        </svg>
+                                        Crear Producto
+                                    </button>
+                                </div>
 
                     </form>
                     <div id="alert-messages" class="mt-4">
@@ -95,6 +98,8 @@
                 </div>
             </div>
         </div>
+    </div>
+    </div>
     </div>
 
     <!-- Footer inyectado -->
@@ -105,7 +110,6 @@
         crossorigin="anonymous"></script>
     <script src="../js/main.js"></script>
     <script src="../js/navBarAndFooter.js"></script>
-    <script src="../js/formLogic.js"></script>
 </body>
 
 

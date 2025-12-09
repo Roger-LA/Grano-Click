@@ -10,7 +10,7 @@ const resulTitulo = document.getElementById("resultsTitle");
 const pastelTitulo = document.getElementById("pastryTitle");
 const noEncontrado = document.getElementById("notFound");
 let contProducts = 0;
-let listaDeCompras ={};
+let listaDeCompras = {};
 
 
 function recuperarTarjetas() {
@@ -29,13 +29,13 @@ function recuperarTarjetas() {
 
 function searchText() {
   const textoBusqueda = inpBuscar.value.toLowerCase().trim();
-  
-  
+
+
   const palabrasBusqueda = textoBusqueda.split(/\s+/);
   let encontrados = false;
 
   if (textoBusqueda !== "") {
-    
+
     cafeTitulo.style.display = "none";
     pastelTitulo.style.display = "none";
     resulTitulo.style.display = "";
@@ -73,7 +73,7 @@ function getProductos() {
       cafeData = data.filter((item) => item.categoria === "cafe");
       cards_cafe.insertAdjacentHTML("beforeend", createCards(cafeData));
 
-        postreData = data.filter((item) => item.categoria === "pasteleria");
+      postreData = data.filter((item) => item.categoria === "pasteleria");
       cardsPostre.insertAdjacentHTML("beforeend", createCards(postreData));
     })
     .catch((error) => {
@@ -145,25 +145,25 @@ window.addEventListener("load", function (event) {
 });
 
 function cambiarLista(nombre, precio, cantidad) {
-    let encontrado = false;
+  let encontrado = false;
   for (const key in listaDeCompras) {
     if (listaDeCompras[key].nombre === nombre) {
       const nuevaCantidad = Number(cantidad); // conversión segura
       listaDeCompras[key].cantidad = nuevaCantidad;
 
       if (nuevaCantidad === 0) {
-        delete listaDeCompras[key];   
-      } 
+        delete listaDeCompras[key];
+      }
       encontrado = true;
       break;
     }
   }
   if (!encontrado) {
-    listaDeCompras[++contProducts] = { "nombre":nombre,"precio": precio, "cantidad":Number(cantidad) };
-  
+    listaDeCompras[++contProducts] = { "nombre": nombre, "precio": precio, "cantidad": Number(cantidad) };
+
   }
 
-localStorage.setItem("products",JSON.stringify(listaDeCompras));
+  localStorage.setItem("products", JSON.stringify(listaDeCompras));
 }
 document.addEventListener("click", (e) => {
   const btnSuma = e.target.closest(".btn-agregar");
@@ -173,7 +173,7 @@ document.addEventListener("click", (e) => {
     const name = document.getElementById(`nombre-${id}`);
     const price = document.getElementById(`precio-${id}`);
     input.value = parseInt(input.value) + 1;
-    cambiarLista(name.textContent,price.textContent,input.value);
+    cambiarLista(name.textContent, price.textContent, input.value);
     return;
   }
 
@@ -184,17 +184,39 @@ document.addEventListener("click", (e) => {
     const name = document.getElementById(`nombre-${id}`);
     const price = document.getElementById(`precio-${id}`);
     const cantidadActual = parseInt(input.value);
-        
+
 
     if (cantidadActual > 0) {
       input.value = cantidadActual - 1;
-      cambiarLista(name.textContent,price.textContent,input.value);
+      cambiarLista(name.textContent, price.textContent, input.value);
     }
   }
 
   if (inpBuscar) {
     inpBuscar.addEventListener("input", recuperarTarjetas);
-  } 
-
+  }
 });
 
+//Lógica de Deep Link Scroll
+
+function handleDeepLinkScroll() {
+  const hash = window.location.hash;
+  if (hash) {
+    const targetElementId = hash.substring(1);
+    const targetElement = document.getElementById(targetElementId);
+
+    if (targetElement) {
+      targetElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  }
+}
+
+window.addEventListener("load", function (event) {
+  event.preventDefault();
+  getProductos();
+  setTimeout(handleDeepLinkScroll, 400);
+
+});

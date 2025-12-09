@@ -29,7 +29,7 @@ main {
 }
 
 .main-wrapper {
-  max-width: 75rem;
+  max-width: 85rem;
 }
 
 /* ------------------------------
@@ -127,7 +127,7 @@ main {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
   flex-wrap: wrap;
 }
 
@@ -161,7 +161,7 @@ main {
   font-size: 1.2rem;
   color: var(--textColor);
   margin-bottom: 1rem;
-  min-height: 3rem;
+  min-height: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -192,9 +192,9 @@ main {
 /* GRUPO 2: Imágenes Grandes */
 .large-products-group {
   display: flex;
-  gap: 1.5rem;
-  flex: 1.5;
-  justify-content: flex-end;
+  gap: 3rem;
+  flex: 2;
+  justify-content: center;
 }
 
 .large-img-box img {

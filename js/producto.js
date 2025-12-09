@@ -142,6 +142,8 @@ function createCards(data) {
 window.addEventListener("load", function (event) {
   event.preventDefault();
   getProductos();
+
+  setTimeout(handleDeepLinkScroll, 400);
 });
 
 function cambiarLista(nombre, precio, cantidad) {
@@ -213,10 +215,3 @@ function handleDeepLinkScroll() {
     }
   }
 }
-
-window.addEventListener("load", function (event) {
-  event.preventDefault();
-  getProductos();
-  setTimeout(handleDeepLinkScroll, 400);
-
-});

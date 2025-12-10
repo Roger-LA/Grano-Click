@@ -1,6 +1,6 @@
-const cards_cafe = document.getElementById("cards_cafe");
+export const cards_cafe = document.getElementById("cards_cafe");
 let cafeData = [];
-const cardsPostre = document.getElementById("cardsPostre");
+export const cardsPostre = document.getElementById("cardsPostre");
 let postreData = [];
 
 const inpBuscar = document.getElementById("search-input");
@@ -86,7 +86,7 @@ function getInfo(id) {
   return cafeData[index] || null;
 } //getInfo
 
-function createCards(data) {
+export function createCards(data) {
   let card = ``;
 
   for (const product of data) {

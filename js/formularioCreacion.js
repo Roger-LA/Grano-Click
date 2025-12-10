@@ -1,60 +1,100 @@
-import { cards_cafe, cardsPostre, createCards } from "./producto.js";
+let products = [];
+const productName = document.getElementById("productName");
+const productCategory = document.getElementById("productCategory");
+const productDescription = document.getElementById("productDescription");
+const productPrice = document.getElementById("productPrice");
+const createProductBtn = document.getElementById("createProductBtn");
+const alertMessages = document.getElementById("alert-messages");
 const form = document.getElementById('productForm');
 
-form.addEventListener('submit', function (event) {
-    event.preventDefault();
-    crearObjetoProducto();
-});
+let errors = [];
 
+let regs = {
+  name: /^[A-Za-zÀ-ÿ0-9\s]{4,70}$/,
+  description: /^(?=.{5,70}$)[A-Za-z0-9 ]{5,70}$/,
+  price: /^(?!0)([1-9][0-9]{0,2}|[1-9]{1,2})$/, //maximo 999
+};
+function cleanAlert() {
+  if (alertMessages.lastChild) {
+    while (alertMessages.lastChild) {
+      alertMessages.removeChild(alertMessages.lastChild);
+    }
+  }
+}
+function cleanErrors() {
+  productName.style.border = "none";
+  productCategory.style.border = "none";
+  productDescription.style.border = "none";
+  productPrice.style.border = "none";
+  cleanAlert();
+  errors = [];
+}
+
+function validateField(element, regex, errorField) {
+  if (!regex.test(element.value)) {
+    element.style.border = "0.12rem solid red";
+    errors.push(errorField);
+    return false;
+  }
+  return true;
+}
+
+function validateInfo() {
+  let veredict = true;
+  veredict &= validateField(productName, regs.name, "Nombre");
+  if (productCategory.value !== "cafe" && productCategory.value !== "postre") {
+    productCategory.style.border = "0.12rem solid red";
+    errors.push("Categoría");
+    veredict = false;
+  }
+  veredict &= validateField(
+    productDescription,
+    regs.description,
+    "Descripción"
+  );
+  veredict &= validateField(productPrice, regs.price, "Precio");
+  return veredict;
+}
+
+function productExist(name, productList) {
+  name = name
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+  for (const product of productList) {
+    if (
+      product.nombre
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "") === name
+    )
+      return true;
+  }
+  return false;
+}
 
 function crearObjetoProducto() {
-    const name = document.getElementById("productName").value;
-    const description = document.getElementById("productDescription").value;
-    const category = document.getElementById("productCategory").value;
-    const price = parseFloat(document.getElementById("productPrice").value);
-    const photoInput = document.getElementById("productPhoto").value;
-
+    const category = productCategory.value;
     const nuevoIdNum = Math.floor(Date.now() / 1000);
     const productId = `${category}_${nuevoIdNum}`;
-    const photoUrl = `../assets/Producto/${photoInput.split('\\').pop()}`;
+    
+    // Valor por defecto ya que no hay input de foto
+    const photoUrl = `../assets/Producto/producto_nuevo.png`; 
 
     const productoModel = {
         "id": productId,
-        "nombre": name,
+        "nombre": productName.value,
         "categoria": category,
-        "descripcion": description,
-        "precio": price,
+        "descripcion": productDescription.value,
+        "precio": parseFloat(productPrice.value),
         "foto": photoUrl
     };
 
-    const jsonString = JSON.stringify(productoModel, null, 2);
-    document.getElementById('jsonOutput').textContent = jsonString;
-    alert('¡Producto creado! Objeto JSON generado exitosamente.');
 
-        guardarProductoEnLocalStorage(productoModel);
+    guardarProductoEnLocalStorage(productoModel);
 
-    inyectarNuevoProducto(productoModel);
-
-
+    alert('¡Producto creado y guardado localmente! Revisa la página de productos.');
     form.reset();
-}
-
-function inyectarNuevoProducto(productoModel) {
-    const htmlCard = createCards([productoModel]);
-
-    if (productoModel.categoria === "cafe") {
-        if (cards_cafe) {
-            cards_cafe.insertAdjacentHTML("beforeend", htmlCard);
-        } else {
-            console.error("Contenedor 'cards_cafe' no encontrado.");
-        }
-    } else if (productoModel.categoria === "pasteleria") {
-        if (cardsPostre) {
-            cardsPostre.insertAdjacentHTML("beforeend", htmlCard);
-        } else {
-            console.error("Contenedor 'cardsPostre' no encontrado.");
-        }
-    }
 }
 
 function guardarProductoEnLocalStorage(producto) {
@@ -63,13 +103,47 @@ function guardarProductoEnLocalStorage(producto) {
     localStorage.setItem('productos_locales', JSON.stringify(productosGuardados));
 }
 
-function cargarProductosLocales() {
-    const productosGuardados = JSON.parse(localStorage.getItem('productos_locales')) || [];
-    
-    if (productosGuardados.length > 0) {
-        productosGuardados.forEach(producto => {
-            inyectarNuevoProductoEnDOM(producto);
-        });
-        console.log(`Se cargaron ${productosGuardados.length} productos de localStorage.`);
-    }
+function addProduct() {
+  fetch("../data/productos.json")
+    .then((res) => res.json())
+    .then((data) => {
+      products = data;
+      if (validateInfo()) {
+        if (!productExist(productName.value, products)) {
+          console.log("Validacion completa, guardado en localStorage.");
+          cleanErrors();
+          crearObjetoProducto();
+        } else {
+          alertMessages.insertAdjacentHTML(
+            "beforeend",
+            "<strong> Ese producto ya existe</strong>"
+          );
+        }
+      } else {
+        let msg = `Lo sentimos, pero los siguientes campos no son válidos: `;
+
+        alertMessages.insertAdjacentHTML(
+          "beforeend",
+          "<strong>" + msg + errors.join(", ") + "</strong>"
+        );
+      }
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
 }
+
+
+createProductBtn.addEventListener("click", handleAddProductFlow);
+
+function handleAddProductFlow() {
+    cleanErrors();
+    addProduct();
+}
+
+fetch("../data/productos.json")
+    .then((res) => res.json())
+    .then((data) => {
+        products = data;
+        console.log("Productos iniciales cargados para validación:", products.length);
+    });

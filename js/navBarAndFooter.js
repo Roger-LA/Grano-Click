@@ -44,7 +44,6 @@ function cargarSweetAlertCondicionalmente() {
     const script = document.createElement('script');
     script.src = "https://cdn.jsdelivr.net/npm/sweetalert2@11";
     document.head.appendChild(script);
-    console.log("SweetAlert2 CDN inyectado directamente para asegurar la carga.");
   }
 }
 

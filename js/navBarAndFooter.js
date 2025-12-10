@@ -1,5 +1,5 @@
 /*  Se necesita que en el html la pagina tenga un id en el primer div, con el con un nombre relativo a la pagina en la que se esta
-por ejemplo  
+por ejemplo
 <div class="container" id ="aboutUsHere">
 
 */
@@ -98,13 +98,14 @@ document.addEventListener("click", (e) => {
 
 /*Aviso de Privacidad */
 function avisoPrivacidad() {
-
+  const page = document.querySelector("div");
+  let avisoPage = getPagePaths(page, "avisoDePrivacidad.html");
   // Sweetalert
   Swal.fire({
     title: '🔒 Aviso de Privacidad',
     html: `
         <p style="text-align: left;">
-            <strong>Grano & Click</strong> es responsable de la privacidad de sus datos. 
+            <strong>Grano & Click</strong> es responsable de la privacidad de sus datos.
             Recabamos datos de identificación, contacto y de entrega para:
         </p>
         <ul style="text-align: left; margin-bottom: 15px;">
@@ -112,6 +113,9 @@ function avisoPrivacidad() {
             <li>Gestionar su facturación.</li>
             <li>Fines de marketing.</li>
         </ul>
+        <p>Para nuestro Aviso de Privacidad completo de click
+          <a href="${avisoPage}" target="_blank"><strong>aquí</strong></a>
+        </p>
     `,
     confirmButtonText: 'Cerrar',
     confirmButtonColor: '#63addfff',
@@ -136,14 +140,14 @@ function buildNavBar(page) {
   const navBar = `
   <nav class="navbar navbar-dark navbar-expand-lg mt-2">
           <div class="container" id="navBar">
-            <a class="navbar-brand" href="${indexPage}"> 
+            <a class="navbar-brand" href="${indexPage}">
               <img src="${iconPath}" alt="Logo" height="35" />
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
               data-bs-target="#mainNavbarContent" aria-controls="mainNavbarContent"
               aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
-            </button> 
+            </button>
             <div class="collapse navbar-collapse" id="mainNavbarContent">
               <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                 <li class="nav-item">

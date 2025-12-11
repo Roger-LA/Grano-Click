@@ -11,7 +11,6 @@ html {
 
 }
 
-
 body {
   font-family: 'Outfit', sans-serif;
   background: linear-gradient(90deg, var(--secondaryColor) 0%, var(--bgColor) 100%);
@@ -46,7 +45,7 @@ main {
 }
 
 .hero-card {
-  height: 39.063rem;
+  min-height: 39.063rem;
   width: 100%;
   border-radius: 1.25rem;
   overflow: hidden;
@@ -77,6 +76,10 @@ main {
   position: relative;
   z-index: 2;
   width: 100%;
+  padding: 1rem 1rem !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .content-relative {
@@ -144,13 +147,13 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 160px;
+  width: 10rem;
   margin-bottom: 1rem;
 }
 
 .product-card .img-box img {
-  width: 100px;
-  height: 100px;
+  width: 6.25rem;
+  height: 6.25rem;
   border-radius: 20%;
   object-fit: cover !important;
   box-shadow: 0 0.25rem 0.938rem #011C40;
@@ -198,10 +201,10 @@ main {
 }
 
 .large-img-box img {
-  width: 212px;
-  height: 255px;
+  width: 13.25rem;
+  height: 16rem;
   object-fit: cover !important;
-  border-radius: 15px;
+  border-radius: 0.938rem;
   box-shadow: 0 0.5rem 1.25rem #011C40;
 }
 
@@ -209,7 +212,7 @@ main {
    RESPONSIVIDAD (Media Queries)
    ------------------------------ */
 
-@media (max-width: 1024px) {
+@media (max-width: 64rem) {
 
   .hero-grid {
     grid-template-columns: 1fr !important;
@@ -240,39 +243,29 @@ main {
 
   /* --- TARJETA CENTRAL (TEXTO): ORDEN Y ESTILO --- */
 
-  .hero-center {
-    z-index: 5;
-    background-image: none !important;
-    background-color: rgba(14, 39, 56, 0.529) !important;
-    padding: 3rem 1.5rem !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  /* Contenido de texto  */
   .content-relative {
     position: relative;
     z-index: 10;
   }
 
-  /* --- IMÁGENES LATERALES: EFECTO DE CORTINA / MÁSCARA --- */
-
   .hero-left,
   .hero-right {
-    z-index: 1;
-    clip-path: none !important;
+    display: none !important;
   }
 
-  /*
-  .hero-left img {
-    clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+  .hero-center {
+    z-index: 5;
+    background-image: url('../assets/FondoUno.png') !important;
+    background-color: transparent !important;
+    background-size: cover !important;
+    background-position: center !important;
+
+    padding: 1rem 1rem !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .hero-right img {
-    clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
-  }
-*/
   .section-title-container h2 {
     font-size: 2rem;
     text-align: center;
@@ -293,7 +286,7 @@ main {
   }
 }
 
-@media (max-width: 576px) {
+@media (max-width:36rem) {
 
   .small-products-group,
   .large-products-group {
@@ -466,6 +459,7 @@ a#carrito {
 }
 
 @media (max-width: 390px) {
+
   .Btn,
   .Btn2 {
     transition: none !important;
@@ -508,7 +502,8 @@ a#carrito {
   box-shadow: -0.7rem 1rem 1rem -0.12rem black;
   max-width: 20rem;
   height: 19rem;
-  padding: 2rem;}
+  padding: 2rem;
+}
 
 .frmNCin {
   border-radius: 0.4rem;
@@ -532,7 +527,7 @@ a#carrito {
   padding-top: 2rem;
   padding-left: 4rem;
   margin-bottom: 5rem;
-  
+
 }
 
 @media (max-width: 768px) {
@@ -547,7 +542,8 @@ a#carrito {
     display: block;
   }
 
-  .Btn, .Btn2 {
+  .Btn,
+  .Btn2 {
     width: 100%;
     margin-bottom: 1rem;
   }

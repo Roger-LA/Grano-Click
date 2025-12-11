@@ -25,50 +25,50 @@
   </div>
   <div class="container d-flex align-items-center justify-content-center">
     <div class="form-signin mt-4">
-      <form action="">
+      <form action="" id="signinForm">
         <div class="row mb-3">
           <div class="col-12 col-md-6">
             <label for="" style="font-size: 1.5rem" class="frmlbl">Nombre:</label>
-            <input type="text" placeholder="Nombre" class="frminp" />
+            <input type="text" placeholder="Nombre" class="frminp" id="userName" required/>
           </div>
           <div class="col-12 col-md-6">
             <label for="" style="font-size: 1.5rem" class="frmlbl">Apellido:</label>
-            <input type="text" placeholder="Apellido" class="frminp" />
+            <input type="text" placeholder="Apellido" class="frminp" id="userLastName" required/>
           </div>
         </div>
         <div class="row mb-3">
           <div class="col-12 col-md-6">
             <label for="" style="font-size: 1.5rem" class="frmlbl">Correo:</label>
-            <input type="email" placeholder="Correo" class="frminp" />
+            <input type="email" placeholder="Correo" class="frminp" id="userEmail" required/>
           </div>
           <div class="col-12 col-md-6">
             <label for="" style="font-size: 1.5rem" class="frmlbl">Fecha de Nacimiento:</label>
-            <input type="date" placeholder="Correo" class="frminp" />
+            <input type="date" placeholder="Correo" class="frminp" id="userBirthDate" required/>
           </div>
         </div>
         <div class="row mb-3">
           <div class="col-12 col-md-6">
             <label for="" style="font-size: 1.5rem" class="frmlbl">Domicilio:</label>
-            <input type="text" placeholder="Domicilio" class="frminp" />
+            <input type="text" placeholder="Domicilio" class="frminp" id="userAddress" required/>
           </div>
           <div class="col-12 col-md-6">
             <label for="" style="font-size: 1.5rem" class="frmlbl">Código Postal:</label>
-            <input type="number" placeholder="Código Postal" class="frminp" />
+            <input type="number" placeholder="Código Postal" class="frminp" id="userPostalCode" required/>
           </div>
         </div>
         <div class="row mb-3">
           <div class="col-12 col-md-6">
             <label for="" style="font-size: 1.5rem" class="frmlbl">Contraseña:</label>
-            <input type="password" placeholder="Contraseña" class="frminp" />
+            <input type="password" placeholder="Contraseña" class="frminp" id="userPassword" required/>
           </div>
           <div class="col-12 col-md-6">
             <label for="" style="font-size: 1.5rem" class="frmlbl">Confirmar Contraseña:</label>
-            <input type="password" placeholder="Confirmar Contraseña" class="frminp" />
+            <input type="password" placeholder="Confirmar Contraseña" class="frminp" id="userConfirmPassword" required/>
           </div>
         </div>
         <div class="row mb-3">
           <div class="col-12 col-md-6">
-            <button class="Btn">
+            <button class="Btn" type="button" id="btnSignin">
               REGISTRAR
               <svg class="svgIcon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-door-open"
                 viewBox="0 0 16 16">
@@ -78,7 +78,7 @@
               </svg></button>
           </div>
           <div class="col-12 col-md-6">
-            <button class="Btn2">
+            <button class="Btn2" type="button" id="btnCancel">
               CANCELAR
               <svg class="svgIcon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-x-circle"
                 viewBox="0 0 16 16">
@@ -89,6 +89,7 @@
           </div>
         </div>
       </form>
+      <div id="alert-messages" class="mt-4"></div>
     </div>
   </div>
 
@@ -97,6 +98,7 @@
     crossorigin="anonymous"></script>
   <script src="../js/main.js"></script>
   <script src="../js/navBarAndFooter.js"></script>
+  <script src="../js/signin.js"></script>
 </body>
 
 </html>

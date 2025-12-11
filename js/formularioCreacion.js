@@ -5,14 +5,15 @@ const productDescription = document.getElementById("productDescription");
 const productPrice = document.getElementById("productPrice");
 const createProductBtn = document.getElementById("createProductBtn");
 const alertMessages = document.getElementById("alert-messages");
-const form = document.getElementById('productForm');
-
+const form = document.getElementById("productForm");
+const productImage = document.getElementById("productImage");
 let errors = [];
 
 let regs = {
   name: /^[A-Za-zÀ-ÿ0-9\s]{4,70}$/,
   description: /^(?=.{5,70}$)[A-Za-z0-9 ]{5,70}$/,
   price: /^(?!0)([1-9][0-9]{0,2}|[1-9]{1,2})$/, //maximo 999
+  url: /^(https?:\/\/)([a-zA-Z0-9.-]+)(:[0-9]{1,5})?(\/(?!.*\s).*\.(jpg|jpeg|png|webp|svg))$/
 };
 function cleanAlert() {
   if (alertMessages.lastChild) {
@@ -26,9 +27,11 @@ function cleanErrors() {
   productCategory.style.border = "none";
   productDescription.style.border = "none";
   productPrice.style.border = "none";
+  productImage.style.border ="none";
   cleanAlert();
   errors = [];
 }
+
 
 function validateField(element, regex, errorField) {
   if (!regex.test(element.value)) {
@@ -38,8 +41,7 @@ function validateField(element, regex, errorField) {
   }
   return true;
 }
-
-function validateInfo() {
+ function validateInfo() {
   let veredict = true;
   veredict &= validateField(productName, regs.name, "Nombre");
   if (productCategory.value !== "cafe" && productCategory.value !== "postre") {
@@ -53,6 +55,8 @@ function validateInfo() {
     "Descripción"
   );
   veredict &= validateField(productPrice, regs.price, "Precio");
+  veredict &= validateField(productImage, regs.url, "Url") ;
+  
   return veredict;
 }
 
@@ -93,8 +97,7 @@ function crearObjetoProducto() {
 
     guardarProductoEnLocalStorage(productoModel);
 
-    alert('¡Producto creado y guardado localmente! Revisa la página de productos.');
-    form.reset();
+    //
 }
 
 function guardarProductoEnLocalStorage(producto) {
@@ -110,13 +113,17 @@ function addProduct() {
       products = data;
       if (validateInfo()) {
         if (!productExist(productName.value, products)) {
-          console.log("Validacion completa, guardado en localStorage.");
           cleanErrors();
           crearObjetoProducto();
+          alertMessages.insertAdjacentHTML(
+            "beforeend",
+            "<strong>Producto agregado correctamente.</strong>"
+          );
+          form.reset();
         } else {
           alertMessages.insertAdjacentHTML(
             "beforeend",
-            "<strong> Ese producto ya existe</strong>"
+            `<strong> El producto ${productName.value} ya existe</strong>`
           );
         }
       } else {
@@ -145,5 +152,4 @@ fetch("../data/productos.json")
     .then((res) => res.json())
     .then((data) => {
         products = data;
-        console.log("Productos iniciales cargados para validación:", products.length);
     });

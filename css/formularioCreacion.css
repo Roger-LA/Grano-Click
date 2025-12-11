@@ -1,0 +1,86 @@
+:root {
+    --primaryColor: #011C40;
+    --secondaryColor: #023859;
+    --bgColor: #26658C;
+    --fifthColor: #54ACBF;
+    --color-light: #A7EBF2;
+    --textColor: #FFFFFF;
+    --hgColor: #FDF5AA;
+    --mainFamilyFont: "Outfit", sans-serif;
+}
+
+body {
+    background-color: var(--bgColor);
+    font-family: var(--mainFamilyFont);
+    color: var(--textColor);
+}
+
+.page-header {
+    color: var(--color-light);
+    padding-top: 1.25rem;
+
+    border-radius: 0 0 10px 10px;
+}
+
+.product-form-container {
+    background-color: var(--secondaryColor);
+    padding: 1.875rem;
+    border-radius: 0.625rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.3);
+}
+
+.form-control,
+.form-select {
+    background-color: var(--bgColor);
+    color: var(--textColor);
+    border: 0.063rem solid var(--fifthColor);
+    padding: 0.625rem;
+    transition: all 0.3s;
+}
+
+.form-control:focus,
+.form-select:focus {
+    background-color: var(--bgColor);
+    color: var(--textColor);
+    border-color: var(--hgColor);
+    box-shadow: 0 0 0 0.25rem rgba(253, 245, 170, 0.25);
+}
+
+.form-control::placeholder {
+    color: var(--color-light);
+    opacity: 0.7;
+}
+
+.form-label {
+    color: var(--color-light);
+    font-weight: 31.25rem;
+    margin-bottom: 0.313rem;
+}
+
+.btn-submit {
+    background-color: var(--hgColor);
+    color: var(--primaryColor);
+    border: none;
+    font-weight: 43.75rem;
+    padding: 0.625rem 1.25rem;
+    border-radius: 0.313rem;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-submit:hover {
+    background-color: var(--fifthColor);
+    color: var(--textColor);
+    transform: translateY(-0.125rem);
+}
+
+
+@media (max-width: 48rem) {
+    .product-form-container {
+        padding: 1.25rem;
+        margin: 0 0.625rem;
+    }
+
+    .page-header h1 {
+        font-size: 1.8rem;
+    }
+}

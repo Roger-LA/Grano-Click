@@ -1,3 +1,4 @@
+
 .contact-box {
     background-color: #011C40; 
     border-radius: 8px;
@@ -19,13 +20,29 @@
     background-image: url('./assets/barista.png');
     background-size: cover;
     background-position: center;
-    min-height: 37.5rem;
+    min-height: 37.5rem;}
+
+
+.contact-img-element {
+    width: 80%;
+    object-fit: cover;
+    display: block;
 }
 
-/* Inputs (móvil) */
+.contact-img {
+    padding-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 2rem;
+    padding-left: 5rem;
+
+}
+
 .custom-input {
     background: beige;
     color: black;
+
 }
 
 /* Ocultar img móviles */
@@ -48,3 +65,4 @@
     border-radius: 8px;
     overflow: hidden;
 }
+

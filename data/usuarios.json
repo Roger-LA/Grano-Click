@@ -1,0 +1,13 @@
+[
+    {
+        "id": "1",
+        "nombre": "Job",
+        "apellido": "Ibarra",
+        "correo": "job@correo.com",
+        "fechaNacimiento": "13-08-1998",
+        "direccion": "calle 07",
+        "codigoPostal": "44004",
+        "telefono": "3320382976",
+        "contraseña": "jobadr13=2"
+    }
+]

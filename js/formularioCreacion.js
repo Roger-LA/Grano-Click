@@ -13,7 +13,7 @@ let regs = {
   name: /^[A-Za-zÀ-ÿ0-9\s]{4,70}$/,
   description: /^(?=.{5,70}$)[A-Za-z0-9 ]{5,70}$/,
   price: /^(?!0)([1-9][0-9]{0,2}|[1-9]{1,2})$/, //maximo 999
-  url: /^(https?:\/\/)([a-zA-Z0-9.-]+)(:[0-9]{1,5})?(\/(?!.*\s).*\.(jpg|jpeg|png|webp|svg))$/
+  url: /^(https?:\/\/)([a-zA-Z0-9.-]+)(:[0-9]{1,5})?(\/(?!.*\s).*\.(jpg|jpeg|png|webp|svg|JPG|JPEG|PNG||WEBP|SVG))$/
 };
 function cleanAlert() {
   if (alertMessages.lastChild) {
@@ -27,7 +27,7 @@ function cleanErrors() {
   productCategory.style.border = "none";
   productDescription.style.border = "none";
   productPrice.style.border = "none";
-  productImage.style.border ="none";
+  productImage.style.border = "none";
   cleanAlert();
   errors = [];
 }
@@ -44,7 +44,7 @@ function validateField(element, regex, errorField) {
  function validateInfo() {
   let veredict = true;
   veredict &= validateField(productName, regs.name, "Nombre");
-  if (productCategory.value !== "cafe" && productCategory.value !== "postre") {
+  if (productCategory.value !== "cafe" && productCategory.value !== "pasteleria") {
     productCategory.style.border = "0.12rem solid red";
     errors.push("Categoría");
     veredict = false;
@@ -76,50 +76,69 @@ function productExist(name, productList) {
   }
   return false;
 }
+function validarImagen(url) {
+    const defaultImage = "../assets/Producto/producto_nuevo.png"; 
+    if (!url || url.trim() === "") {
+        return Promise.resolve(defaultImage);
+    } 
+    return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => {
+            resolve(url);
+        };
+        img.onerror = () => {
+            resolve(defaultImage);
+        };
+        img.src = url;
+    });
+}
 
-function crearObjetoProducto() {
-    const category = productCategory.value;
-    const nuevoIdNum = Math.floor(Date.now() / 1000);
-    const productId = `${category}_${nuevoIdNum}`;
-    
-    // Valor por defecto ya que no hay input de foto
-    const photoUrl = `../assets/Producto/producto_nuevo.png`; 
+function crearObjetoProducto(finalPhotoUrl) {
+  const category = productCategory.value;
+  const nuevoIdNum = Math.floor(Date.now() / 1000);
+  const productId = `${category}_${nuevoIdNum}`;
+  const photoUrl = productImage.value;
 
-    const productoModel = {
-        "id": productId,
-        "nombre": productName.value,
-        "categoria": category,
-        "descripcion": productDescription.value,
-        "precio": parseFloat(productPrice.value),
-        "foto": photoUrl
-    };
-
-
-    guardarProductoEnLocalStorage(productoModel);
-
-    //
+  const productoModel = {
+    "id": productId,
+    "nombre": productName.value,
+    "categoria": category,
+    "descripcion": productDescription.value,
+    "precio": parseFloat(productPrice.value),
+    "foto": finalPhotoUrl
+  };
+  guardarProductoEnLocalStorage(productoModel);
 }
 
 function guardarProductoEnLocalStorage(producto) {
-    const productosGuardados = JSON.parse(localStorage.getItem('productos_locales')) || [];
-    productosGuardados.push(producto);
-    localStorage.setItem('productos_locales', JSON.stringify(productosGuardados));
+  const productosGuardados = JSON.parse(localStorage.getItem('productos_locales')) || [];
+  productosGuardados.push(producto);
+  localStorage.setItem('productos_locales', JSON.stringify(productosGuardados));
 }
 
-function addProduct() {
-  fetch("../data/productos.json")
-    .then((res) => res.json())
-    .then((data) => {
-      products = data;
+async function addProduct() {
+const res = await fetch("../data/productos.json");
+    const data = await res.json();
+    products = data;
       if (validateInfo()) {
         if (!productExist(productName.value, products)) {
           cleanErrors();
-          crearObjetoProducto();
-          alertMessages.insertAdjacentHTML(
-            "beforeend",
-            "<strong>Producto agregado correctamente.</strong>"
-          );
-          form.reset();
+  const urlIngresada = productImage.value;
+            const urlValidada = await validarImagen(urlIngresada); 
+            if (urlValidada !== urlIngresada) {
+                alertMessages.insertAdjacentHTML(
+                    "beforeend",
+                    `<strong> ⚠️ Advertencia: La URL de la imagen que proporcionó no es válida. Se utilizará la imagen por defecto: ${urlValidada} </strong>`
+                );
+                productImage.style.border = "0.12rem solid orange";
+            }
+            crearObjetoProducto(urlValidada);
+            
+            alertMessages.insertAdjacentHTML(
+                "beforeend",
+                "<strong>Producto agregado correctamente.</strong>"
+            );
+            form.reset();
         } else {
           alertMessages.insertAdjacentHTML(
             "beforeend",
@@ -128,28 +147,21 @@ function addProduct() {
         }
       } else {
         let msg = `Lo sentimos, pero los siguientes campos no son válidos: `;
-
         alertMessages.insertAdjacentHTML(
           "beforeend",
           "<strong>" + msg + errors.join(", ") + "</strong>"
         );
       }
-    })
-    .catch((error) => {
-      console.log(error.message);
-    });
-}
-
-
+    }
 createProductBtn.addEventListener("click", handleAddProductFlow);
 
 function handleAddProductFlow() {
-    cleanErrors();
-    addProduct();
+  cleanErrors();
+  addProduct();
 }
 
 fetch("../data/productos.json")
-    .then((res) => res.json())
-    .then((data) => {
-        products = data;
-    });
+  .then((res) => res.json())
+  .then((data) => {
+    products = data;
+  });

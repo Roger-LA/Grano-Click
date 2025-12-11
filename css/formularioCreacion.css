@@ -16,7 +16,7 @@ body {
 }
 
 .page-header {
-    color: var(--color-light);
+    color: var(--hgColor);
     padding-top: 1.25rem;
 
     border-radius: 0 0 10px 10px;

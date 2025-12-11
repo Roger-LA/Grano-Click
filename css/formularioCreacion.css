@@ -57,15 +57,6 @@ body {
     margin-bottom: 0.313rem;
 }
 
-.image-upload-label {
-    display: block;
-    text-align: center;
-    border: 0.125rem dashed var(--fifthColor);
-    border-radius: 0.5rem;
-    padding: 0.600rem;
-
-}
-
 .btn-submit {
     background-color: var(--hgColor);
     color: var(--primaryColor);
@@ -82,26 +73,6 @@ body {
     transform: translateY(-0.125rem);
 }
 
-.product-image-preview {
-    border: 0.063rem dashed var(--fifthColor);
-    border-radius: 0.5rem;
-    background-color: rgba(0, 0, 0, 0.1);
-    padding: 0.625rem;
-    margin-bottom: 0.625rem;
-    text-align: center;
-}
-
-.product-image-preview img {
-    width: auto;
-    border-radius: 0.313rem;
-    opacity: 0.056rem;
-}
-
-.product-image-preview .preview-label {
-    color: var(--fifthColor);
-    margin-bottom: 0.313rem;
-    display: block;
-}
 
 @media (max-width: 48rem) {
     .product-form-container {

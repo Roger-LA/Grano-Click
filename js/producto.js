@@ -15,10 +15,10 @@ let listaDeCompras = {};
 
 function recuperarTarjetas() {
   if (inpBuscar.value.trim() === "") {
-    cafeTitulo.style.display = "";
-    pastelTitulo.style.display = "";
-    resulTitulo.style.display = "none";
-    noEncontrado.style.display = "none";
+    if (cafeTitulo) cafeTitulo.style.display = "";
+    if (pastelTitulo) pastelTitulo.style.display = "";
+    if (resulTitulo) resulTitulo.style.display = "none";
+    if (noEncontrado) noEncontrado.style.display = "none";
     const tarjetas = document.querySelectorAll(".allCards > .col");
 
     tarjetas.forEach((tarjeta) => {
@@ -28,17 +28,16 @@ function recuperarTarjetas() {
 }
 
 function searchText() {
+  if (!inpBuscar) return;
   const textoBusqueda = inpBuscar.value.toLowerCase().trim();
-
-
   const palabrasBusqueda = textoBusqueda.split(/\s+/);
+
   let encontrados = false;
 
   if (textoBusqueda !== "") {
-
-    cafeTitulo.style.display = "none";
-    pastelTitulo.style.display = "none";
-    resulTitulo.style.display = "";
+    if (cafeTitulo) cafeTitulo.style.display = "none";
+    if (pastelTitulo) pastelTitulo.style.display = "none";
+    if (resulTitulo) resulTitulo.style.display = "";
     const tarjetas = document.querySelectorAll(".allCards > .col");
 
     tarjetas.forEach((tarjeta) => {
@@ -58,23 +57,25 @@ function searchText() {
         }
       }
     });
-    noEncontrado.style.display = encontrados ? "none" : "";
+  if (noEncontrado) noEncontrado.style.display = encontrados ? "none" : "";
   }
 }
-btnBuscar.addEventListener("click", function (event) {
+if(btnBuscar){
+  btnBuscar.addEventListener("click", function (event) {
   event.preventDefault();
   searchText();
 });
+}
 
 function getProductos() {
   fetch("../data/productos.json")
     .then((res) => res.json())
     .then((data) => {
       cafeData = data.filter((item) => item.categoria === "cafe");
-      cards_cafe.insertAdjacentHTML("beforeend", createCards(cafeData));
+     if(cards_cafe) cards_cafe.insertAdjacentHTML("beforeend", createCards(cafeData));
 
       postreData = data.filter((item) => item.categoria === "pasteleria");
-      cardsPostre.insertAdjacentHTML("beforeend", createCards(postreData));
+      if(cardsPostre) cardsPostre.insertAdjacentHTML("beforeend", createCards(postreData));
     })
     .catch((error) => {
       console.log(error.message);
@@ -139,12 +140,34 @@ function createCards(data) {
   return card;
 } //CrearTarjetas
 
+
+function inyectarNuevoProducto(productoModel) {
+  const htmlCard = createCards([productoModel]);
+  const targetContainer = (productoModel.categoria === "cafe") ? cards_cafe : cardsPostre;
+  if (targetContainer) {
+    targetContainer.insertAdjacentHTML("beforeend", htmlCard);
+  }
+}
+
+function cargarProductosLocales() {
+  const productosGuardados = JSON.parse(localStorage.getItem('productos_locales')) || [];
+  if (productosGuardados.length > 0) {
+    productosGuardados.forEach(inyectarNuevoProducto);
+    console.log(`Se cargaron ${productosGuardados.length} productos de localStorage.`);
+  }
+}
+
+
 window.addEventListener("load", function (event) {
   event.preventDefault();
+    if (cards_cafe && cardsPostre) {
   getProductos();
+  cargarProductosLocales();
 
   setTimeout(handleDeepLinkScroll, 400);
+    }
 });
+
 
 function cambiarLista(nombre, precio, cantidad) {
   let encontrado = false;
@@ -215,3 +238,5 @@ function handleDeepLinkScroll() {
     }
   }
 }
+
+

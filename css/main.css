@@ -436,11 +436,6 @@ a#carrito {
   border-radius: 0.1rem;
 }
 
-.Btn:active {
-  transform: translate(5px, 5px);
-  transition-duration: .3s;
-}
-
 .Btn2::before {
   width: 15.5rem;
   height: 2.3rem;
@@ -458,11 +453,6 @@ a#carrito {
   transition-duration: .3s;
   transform: translate(-100%, 0);
   border-radius: 0.1rem;
-}
-
-.Btn2:active {
-  transform: translate(50px, 50px);
-  transition-duration: .3s;
 }
 
 @media (max-width: 390px) {

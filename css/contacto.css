@@ -1,6 +1,6 @@
 .contact-box {
     background-color: #011C40;
-    border-radius: 8px;
+    border-radius: 0.5rem;
     color: white;
     width: 100%;
     box-sizing: border-box;
@@ -74,12 +74,12 @@
 
 .custom-alert {
     background-color: #023859;
-    border-radius: 8px;
+    border-radius: 0.5rem;
     padding: 1rem;
     margin-top: 1rem;
-    border: 1px solid #A7EBF2;
+    border: 0.063rem solid #A7EBF2;
     color: #A7EBF2;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
 }
 
 
@@ -87,7 +87,7 @@
     color: #FDF5AA;
     margin-bottom: 0.5rem;
     font-size: 1.2rem;
-    font-weight: 700;
+    font-weight: 43.75rem;
 }
 
 .custom-alert-list {
@@ -124,7 +124,7 @@
     justify-content: center;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
     .contact-image {
         display: none;
     }
@@ -140,7 +140,7 @@
     background-size: cover;
     background-position: center;
     min-height: 37.5rem;
-    border-radius: 8px;
+    border-radius:0.5rem;
     overflow: hidden;
 }
 

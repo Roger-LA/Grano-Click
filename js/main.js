@@ -1,6 +1,4 @@
-/**
- * * @param {string} producto
- */
+
 function verDetalles(producto) {
     Swal.fire({
         title: '¡Próximamente!',

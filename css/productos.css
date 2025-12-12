@@ -33,9 +33,9 @@ h1 {
 
 .carousel-inner {
   border-radius: 2rem;
-    overflow: hidden;
-    width: 70% ;
-    margin: 0 auto;
+  overflow: hidden;
+  width: 70%;
+  margin: 0 auto;
 }
 
 .category-divider {
@@ -80,9 +80,11 @@ h1 {
 .product-card-wrapper {
   position: relative;
   width: 20rem;
-  height: 40rem;
+  height: 100%;
   margin: 2rem auto 0 auto;
   padding-top: 18rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .product-card-wrapper .product-image-floating {
@@ -100,6 +102,12 @@ h1 {
   color: rgb(14, 8, 43);
 }
 
+.product-card-wrapper .product-info-card {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
 .product-card-wrapper .product-info-card .card-body {
   padding: 2rem;
   text-align: center;
@@ -111,14 +119,16 @@ h1 {
   margin: 0 auto;
   border-radius: 1rem;
   background-image: url(../assets/Producto/Fondo_Cards.png);
+  flex-grow: 1;
 }
 
 .product-info-card .card-title {
   color: var(--hgColor);
   font-family: var(--title_font);
   text-transform: uppercase;
-  margin-top: 4rem;
-  margin-bottom: 2rem;
+  height: 4rem;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
   font-size: 1.5rem;
   font-weight: 700;
 
@@ -130,25 +140,32 @@ h1 {
   line-height: 1.4;
   margin-bottom: 2rem;
   font-family: var(--text_font);
+  height: 4rem;
 }
+
 
 .product-info-card .card-price {
   color: var(--color-light);
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: bold;
-  margin-top: 1rem;
-  margin-bottom: 3rem;
   font-family: var(--text_font);
+}
+
+#cards_cafe {
+    margin-bottom: 8rem; 
+}
+
+#cardsPostre {
+    margin-bottom: 10rem;
 }
 
 /*--- Estilos de (Contador y Botones) --- */
 
 .product-quantity-control {
   width: calc(100% + 0.3rem);
-  margin: 1.5rem -0.15rem -0.15rem -0.15rem;
   overflow: hidden;
   position: absolute;
-  bottom: 0;
+  bottom: -1.5rem;
   object-fit: cover;
   border-radius: 2rem;
 }
@@ -163,9 +180,6 @@ h1 {
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  flex-grow: 1;
-
-
 }
 
 .product-quantity-control .btn:hover {
@@ -175,7 +189,6 @@ h1 {
 
 .product-quantity-control .contador {
   background-color: var(--hgColor);
-  border: none;
   color: var(--primaryColor);
   font-size: 1.2rem;
   font-weight: bold;
@@ -189,11 +202,6 @@ h1 {
   object-fit: contain;
 }
 
-.product-quantity-control#btn-quitar {
-  border-bottom-right-radius: 1rem;
-  border-top-right-radius: 1rem;
-
-}
 
 /*--- Estilo del buscador --- */
 #buscadorBody {

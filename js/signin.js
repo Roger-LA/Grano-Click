@@ -88,7 +88,6 @@ function validateInfo() {
     errors.push("La edad deber ser entre 18 y 100 años");
     veredict = false;
   }//else birth
-
   veredict &= validateField(userPassword, regs.password, "Contraseña");
 
   if(userConfirmPassword.value.trim() === ""){
@@ -100,7 +99,6 @@ function validateInfo() {
     errors.push("Contraseñas no coinciden");
     veredict = false;
   }//else password
-
   return veredict;
 }
 

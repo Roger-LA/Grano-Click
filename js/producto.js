@@ -69,16 +69,13 @@ if (btnBuscar) {
 
 function validarImagen(url) {
   const defaultImage = `../assets/Producto/producto_nuevo.png`;
-
   return new Promise((resolve) => {
     const img = new Image();
     img.onload = () => {
-      console.log(`[VALIDACIÓN ÉXITO] La URL original funciona: ${url}`);
       resolve(url);
     };
     img.onerror = () => {
-      console.error(`[VALIDACIÓN FALLO] La URL no cargó: ${url}. Usando: ${defaultImage}`);
-      resolve(defaultImage); 
+      resolve(defaultImage);
     };
     img.src = url;
   });
@@ -86,7 +83,6 @@ function validarImagen(url) {
 
 async function getProductos() {
   try {
-
     const res = await fetch("../data/productos.json");
     const data = await res.json();
     const productosConImagenesValidas = await Promise.all(
@@ -98,8 +94,6 @@ async function getProductos() {
         };
       })
     );
-
-
 
     cafeData = productosConImagenesValidas.filter((item) => item.categoria === "cafe");
     if (cards_cafe) cards_cafe.insertAdjacentHTML("beforeend", createCards(cafeData));
@@ -193,15 +187,13 @@ async function cargarProductosLocales() {
         const urlValida = await validarImagen(item.foto);
         return {
           ...item,
-          foto: urlValida 
+          foto: urlValida
         };
       })
     );
 
-
     const cafeLocales = productosLocalesConUrlsValidas.filter(item => item.categoria === "cafe");
     const postreLocales = productosLocalesConUrlsValidas.filter(item => item.categoria === "postre");
-
 
     if (cards_cafe) {
       cards_cafe.insertAdjacentHTML("beforeend", createCards(cafeLocales));
@@ -213,7 +205,6 @@ async function cargarProductosLocales() {
 
   } catch (error) {
 
-    console.error("Error al cargar y validar productos locales:", error.message);
   }
 }
 

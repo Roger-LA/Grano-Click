@@ -55,14 +55,25 @@ function bordesRojos(campo) {
   }
 }
 
-function mostrarErrores(arr, msg, separador) {
-  arr.slice(1).forEach((campo) => {
+function mostrarErrores(arr) {
+  const camposInvalidos = arr.slice(1);
+  camposInvalidos.forEach((campo) => {
     bordesRojos(campo);
   });
-  respuesta.insertAdjacentHTML(
-    "beforeend",
-    `<strong>Lo sentimos, ${msg}  ${arr.slice(1).join(separador)} </strong>`
-  );
+  const listaCampos = camposInvalidos.map(campo => {
+    const campoMayuscula = campo.charAt(0).toUpperCase() + campo.slice(1);
+    return `<li>${campoMayuscula}</li>`;
+  }).join("");
+  const mensajeHTML = `
+        <div class="custom-alert">
+            <p class="custom-alert-title">¡Error de Validación!</p>
+            <p><strong>Lo sentimos, los siguientes campos no son válidos:</strong></p>
+            <ul class="custom-alert-list">
+                ${listaCampos}
+            </ul>
+        </div>
+    `;
+  respuesta.insertAdjacentHTML("beforeend", mensajeHTML);
 }
 const camposConReglas = [
   { input: name, reg: regs.name },
@@ -80,27 +91,27 @@ function marcarBorde(input, reg) {
   }
 }
 
-function enviarCorreo(){
+function enviarCorreo() {
   emailjs.init("Ne4BmN0pOIkYrKrtE");
   const templateParams = {
-        nameClient: name.value,
-        emailClient: email.value,
-        phoneClient:phone.value, 
-        message: msg.value
-    };
+    nameClient: name.value,
+    emailClient: email.value,
+    phoneClient: phone.value,
+    message: msg.value
+  };
 
-    emailjs.send('service_8i405gn', 'template_lnf5o9s', templateParams)
-    .then(function(response) {
+  emailjs.send('service_8i405gn', 'template_lnf5o9s', templateParams)
+    .then(function (response) {
       respuesta.insertAdjacentHTML(
-      "beforeend",
-      `<strong>¡Gracias!<br>  
+        "beforeend",
+        `<strong>¡Gracias!<br>  
       Hemos recibido tu mensaje y te responderemos a la brevedad.</strong>`);
-    }, function(error) {
+    }, function (error) {
       respuesta.insertAdjacentHTML(
-      "beforeend",
-      `<strong>¡Gracias!<br>  
-      Hubo un problema al comunicarse contigo, inténtalo más tarde </strong>`);    });
-     
+        "beforeend",
+        `<strong>¡Gracias!<br>  
+      Hubo un problema al comunicarse contigo, inténtalo más tarde </strong>`);
+    });
 
 }
 
@@ -115,9 +126,8 @@ send.addEventListener("click", function (event) {
   const form = document.getElementById("contactForm");
   const respuesta = document.getElementById("respuesta");
   let resultados = validateAll();
-  if (respuesta.lastElementChild) {
-    respuesta.removeChild(respuesta.lastElementChild);
-  }
+
+  respuesta.innerHTML = '';
   if (resultados[0]) {
     enviarCorreo();
     form.reset();
@@ -126,18 +136,6 @@ send.addEventListener("click", function (event) {
       input.style.border = "0.12rem solid #ced4da";
     });
   } else {
-    let mensaje = ``;
-
-    switch (resultados.length) {
-      case 2:
-        mostrarErrores(resultados, "el siguiente campo no es válido: ", "");
-        break;
-      case 3:
-        mostrarErrores(resultados, "los siguientes campos no son  válidos: "," y ");
-        break;
-      default:
-        mostrarErrores(resultados, "los siguientes campos no son  válidos: ", ", ");
-        break;
-    }
+    mostrarErrores(resultados, respuesta);
   }
 });

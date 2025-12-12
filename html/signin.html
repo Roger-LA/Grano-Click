@@ -10,8 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/main.css" />
-  <link rel="stylesheet" href="../css/sobreNosotros.css" />
+  <link rel="stylesheet" href="../css/signin.css" />
 </head>
 
 <body>
@@ -27,47 +26,57 @@
     <div class="form-signin mt-4">
       <form action="">
         <div class="row mb-3">
-          <div class="col-12 col-md-6">
+          <div class="col-12 col-md-6 column-signin">
             <label for="" style="font-size: 1.5rem" class="frmlbl">Nombre:</label>
             <input type="text" placeholder="Nombre" class="frminp" />
           </div>
-          <div class="col-12 col-md-6">
+          <div class="col-12 col-md-6 column-signin">
             <label for="" style="font-size: 1.5rem" class="frmlbl">Apellido:</label>
             <input type="text" placeholder="Apellido" class="frminp" />
           </div>
         </div>
         <div class="row mb-3">
-          <div class="col-12 col-md-6">
+          <div class="col-12 col-md-6 column-signin">
             <label for="" style="font-size: 1.5rem" class="frmlbl">Correo:</label>
-            <input type="email" placeholder="Correo" class="frminp" />
+            <input type="email" placeholder="ejemplo@dominio.com" class="frminp" />
           </div>
-          <div class="col-12 col-md-6">
-            <label for="" style="font-size: 1.5rem" class="frmlbl">Fecha de Nacimiento:</label>
-            <input type="date" placeholder="Correo" class="frminp" />
+          <div class="col-12 col-md-6 column-signin">
+            <label for="" style="font-size: 1.5rem" class="frmlbl">Confirmar Correo:</label>
+            <input type="email" placeholder="ejemplo@dominio.com" class="frminp" id="userConfirmEmail" />
           </div>
         </div>
         <div class="row mb-3">
-          <div class="col-12 col-md-6">
-            <label for="" style="font-size: 1.5rem" class="frmlbl">Domicilio:</label>
-            <input type="text" placeholder="Domicilio" class="frminp" />
+          <div class="col-12 col-md-6 column-signin">
+            <label for="" style="font-size: 1.5rem" class="frmlbl">Telefono:</label>
+            <input type="text" placeholder="Telefono" class="frminp" id="userPhone" />
           </div>
-          <div class="col-12 col-md-6">
+          <div class="col-12 col-md-6 column-signin">
+            <label for="" style="font-size: 1.5rem" class="frmlbl">Fecha de Nacimiento:</label>
+            <input type="date" class="frminp" />
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-12 col-md-6 column-signin">
+            <label for="" style="font-size: 1.5rem" class="frmlbl">Domicilio:</label>
+            <input type="text" placeholder="Calle Número Colonia Municipio" class="frminp" />
+          </div>
+          <div class="col-12 col-md-6 column-signin">
             <label for="" style="font-size: 1.5rem" class="frmlbl">Código Postal:</label>
             <input type="number" placeholder="Código Postal" class="frminp" />
           </div>
         </div>
         <div class="row mb-3">
-          <div class="col-12 col-md-6">
+          <div class="col-12 col-md-6 column-signin">
             <label for="" style="font-size: 1.5rem" class="frmlbl">Contraseña:</label>
             <input type="password" placeholder="Contraseña" class="frminp" />
           </div>
-          <div class="col-12 col-md-6">
+          <div class="col-12 col-md-6 column-signin">
             <label for="" style="font-size: 1.5rem" class="frmlbl">Confirmar Contraseña:</label>
             <input type="password" placeholder="Confirmar Contraseña" class="frminp" />
           </div>
         </div>
         <div class="row mb-3">
-          <div class="col-12 col-md-6">
+          <div class="col-12 col-md-6 column-signin">
             <button class="Btn">
               REGISTRAR
               <svg class="svgIcon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-door-open"
@@ -77,17 +86,20 @@
                   d="M10.828.122A.5.5 0 0 1 11 .5V1h.5A1.5 1.5 0 0 1 13 2.5V15h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117M11.5 2H11v13h1V2.5a.5.5 0 0 0-.5-.5M4 1.934V15h6V1.077z" />
               </svg></button>
           </div>
-          <div class="col-12 col-md-6">
+          <div class="col-12 col-md-6 column-signin">
             <button class="Btn2">
-              CANCELAR
-              <svg class="svgIcon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-x-circle"
+              LIMPIAR
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-backspace"
                 viewBox="0 0 16 16">
-                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
                 <path
-                  d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                  d="M5.83 5.146a.5.5 0 0 0 0 .708L7.975 8l-2.147 2.146a.5.5 0 0 0 .707.708l2.147-2.147 2.146 2.147a.5.5 0 0 0 .707-.708L9.39 8l2.146-2.146a.5.5 0 0 0-.707-.708L8.683 7.293 6.536 5.146a.5.5 0 0 0-.707 0z" />
+                <path
+                  d="M13.683 1a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-7.08a2 2 0 0 1-1.519-.698L.241 8.65a1 1 0 0 1 0-1.302L5.084 1.7A2 2 0 0 1 6.603 1zm-7.08 1a1 1 0 0 0-.76.35L1 8l4.844 5.65a1 1 0 0 0 .759.35h7.08a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1z" />
               </svg></button>
           </div>
         </div>
+        <p id="nota"><i>*Se debe ser mayor a 18 años.<br> * La contraseña debe tener 8–12 caracteres e incluir: <br>
+            mayúsculas, minúsculas, números y al menos un carácter especial</i></p>
       </form>
     </div>
   </div>

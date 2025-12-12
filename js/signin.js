@@ -8,6 +8,7 @@ const userEmail = document.getElementById("userEmail");
 const userBirthDate = document.getElementById("userBirthDate");
 const userAddress = document.getElementById("userAddress");
 const userPostalCode = document.getElementById("userPostalCode");
+const userPhone = document.getElementById("userPhone");
 const userPassword = document.getElementById("userPassword");
 const userConfirmPassword = document.getElementById("userConfirmPassword");
 const btnSignin = document.getElementById("btnSignin");
@@ -17,11 +18,11 @@ const alertMessages = document.getElementById("alert-messages");
 let errors = [];
 
 const regs = {
-  name: /^[A-Za-zÀ-ÿ0-9\s]{4,70}$/,
-  lastName: /^[A-Za-zÀ-ÿ0-9\s]{4,70}$/,
+  name: /^[A-Za-zÁÉÍÓÚáéíóúÑñÜü]+(?:\s+[A-Za-zÁÉÍÓÚáéíóúÑñÜü]+)*$/,
   email: /^[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+$/,
-  address: /^[a-zA-Z0-9\s,.'#-]{3,}$/,
-  postalCode: /^[0-9]{5}$/,
+  address: /^(?=.{5,100}$)(?=.*[A-Za-zÁÉÍÓÚáéíóúÑñÜü])(?!\d+$)(?!\s)(?!.*\s{2,})[A-Za-zÁÉÍÓÚáéíóúÑñÜü0-9\s.,#°\-\/]+$/,
+  postalCode: /^(?!00000$)(?!12345$)(?!23456$)(?!34567$)(?!45678$)(?!56789$)\d{5}$/,
+  phone: /^(?!(\d)\1{9}$)(?!1234567890$)(?!0987654321$)\d{10}$/,
   password: /^(?=.*[A-Z])(?=.*[0-9])(?=.*[~@#_*%\/.+:;=])[A-Za-z0-9~@#_*%\/.+:;=]{10,}$/
 };
 
@@ -30,7 +31,7 @@ function cleanAlert() {
     while (alertMessages.lastChild) {
       alertMessages.removeChild(alertMessages.lastChild);
     }
-  }
+  }//if
 }
 
 function cleanErrors() {
@@ -40,6 +41,7 @@ function cleanErrors() {
   userBirthDate.style.border = "none";
   userAddress.style.border ="none";
   userPostalCode.style.border = "none";
+  userPhone.style.border = "none";
   userPassword.style.border = "none";
   userConfirmPassword.style.border ="none";
   cleanAlert();
@@ -51,7 +53,7 @@ function validateField(element, regex, errorField) {
     element.style.border = "0.12rem solid red";
     errors.push(errorField);
     return false;
-  }
+  }//if
   return true;
 }
 
@@ -65,15 +67,16 @@ function isAdult(birthDateString){
         age--;
     }//if
 
-    return age >= 18;
+    return age >= 18 && age <= 100;
 }
 
 function validateInfo() {
   let veredict = true;
   veredict &= validateField(userName, regs.name, "Nombre");
-  veredict &= validateField(userLastName, regs.lastName, "Apellido");
+  veredict &= validateField(userLastName, regs.name, "Apellido");
   veredict &= validateField(userEmail, regs.email, "Correo");
-  veredict &= validateField(userAddress, regs.address, "Dirección");
+  veredict &= validateField(userAddress, regs.address, "Domicilio");
+  veredict &= validateField(userPhone, regs.phone, "Teléfono");
   veredict &= validateField(userPostalCode, regs.postalCode, "Código Postal");
 
   if(!userBirthDate.value){
@@ -82,10 +85,9 @@ function validateInfo() {
     veredict = false;
   }else if(!isAdult(userBirthDate.value)){
     userConfirmPassword.style.border = "0.12rem solid red";
-    errors.push("Debe tener al menos 18 años");
+    errors.push("La edad deber ser entre 18 y 100 años");
     veredict = false;
   }//else birth
-
   veredict &= validateField(userPassword, regs.password, "Contraseña");
 
   if(userConfirmPassword.value.trim() === ""){
@@ -97,7 +99,6 @@ function validateInfo() {
     errors.push("Contraseñas no coinciden");
     veredict = false;
   }//else password
-
   return veredict;
 }
 
@@ -123,6 +124,7 @@ function createObjectUser() {
         "fechaNacimiento": userBirthDate.value,
         "direccion": userAddress.value,
         "codigoPostal": userPostalCode.value,
+        "telefono": userPhone.value,
         "contraseña": userPassword.value,
     };
     saveUserInLocalStorage(userModel);

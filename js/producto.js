@@ -57,29 +57,53 @@ function searchText() {
         }
       }
     });
-  if (noEncontrado) noEncontrado.style.display = encontrados ? "none" : "";
+    if (noEncontrado) noEncontrado.style.display = encontrados ? "none" : "";
   }
 }
-if(btnBuscar){
+if (btnBuscar) {
   btnBuscar.addEventListener("click", function (event) {
-  event.preventDefault();
-  searchText();
-});
+    event.preventDefault();
+    searchText();
+  });
 }
 
-function getProductos() {
-  fetch("../data/productos.json")
-    .then((res) => res.json())
-    .then((data) => {
-      cafeData = data.filter((item) => item.categoria === "cafe");
-     if(cards_cafe) cards_cafe.insertAdjacentHTML("beforeend", createCards(cafeData));
+function validarImagen(url) {
+  const defaultImage = `../assets/Producto/producto_nuevo.png`;
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => {
+      resolve(url);
+    };
+    img.onerror = () => {
+      resolve(defaultImage);
+    };
+    img.src = url;
+  });
+}
 
-      postreData = data.filter((item) => item.categoria === "pasteleria");
-      if(cardsPostre) cardsPostre.insertAdjacentHTML("beforeend", createCards(postreData));
-    })
-    .catch((error) => {
-      console.log(error.message);
-    });
+async function getProductos() {
+  try {
+    const res = await fetch("../data/productos.json");
+    const data = await res.json();
+    const productosConImagenesValidas = await Promise.all(
+      data.map(async (item) => {
+        const imagenValida = await validarImagen(item.foto);
+        return {
+          ...item,
+          foto: imagenValida
+        };
+      })
+    );
+
+    cafeData = productosConImagenesValidas.filter((item) => item.categoria === "cafe");
+    if (cards_cafe) cards_cafe.insertAdjacentHTML("beforeend", createCards(cafeData));
+
+    postreData = productosConImagenesValidas.filter((item) => item.categoria === "pasteleria");
+    if (cardsPostre) cardsPostre.insertAdjacentHTML("beforeend", createCards(postreData));
+
+  } catch (error) {
+    console.log(error.message);
+  }
 } // getTeam
 
 function getInfo(id) {
@@ -149,23 +173,50 @@ function inyectarNuevoProducto(productoModel) {
   }
 }
 
-function cargarProductosLocales() {
+async function cargarProductosLocales() {
   const productosGuardados = JSON.parse(localStorage.getItem('productos_locales')) || [];
-  if (productosGuardados.length > 0) {
-    productosGuardados.forEach(inyectarNuevoProducto);
-    console.log(`Se cargaron ${productosGuardados.length} productos de localStorage.`);
+
+  if (productosGuardados.length === 0) {
+    return;
+  }
+
+  try {
+
+    const productosLocalesConUrlsValidas = await Promise.all(
+      productosGuardados.map(async (item) => {
+        const urlValida = await validarImagen(item.foto);
+        return {
+          ...item,
+          foto: urlValida
+        };
+      })
+    );
+
+    const cafeLocales = productosLocalesConUrlsValidas.filter(item => item.categoria === "cafe");
+    const postreLocales = productosLocalesConUrlsValidas.filter(item => item.categoria === "postre");
+
+    if (cards_cafe) {
+      cards_cafe.insertAdjacentHTML("beforeend", createCards(cafeLocales));
+    }
+
+    if (cardsPostre) {
+      cardsPostre.insertAdjacentHTML("beforeend", createCards(postreLocales));
+    }
+
+  } catch (error) {
+
   }
 }
 
 
-window.addEventListener("load", function (event) {
+window.addEventListener("load", async function (event) {
   event.preventDefault();
-    if (cards_cafe && cardsPostre) {
-  getProductos();
-  cargarProductosLocales();
+  if (cards_cafe && cardsPostre) {
+    await getProductos();
+    await cargarProductosLocales();
 
-  setTimeout(handleDeepLinkScroll, 400);
-    }
+    setTimeout(handleDeepLinkScroll, 400);
+  }
 });
 
 

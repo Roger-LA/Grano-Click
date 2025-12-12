@@ -1,3 +1,28 @@
+
+.contact-box {
+    background-color: #011C40; 
+    border-radius: 8px;
+    color: white;
+    width: 100%;
+    box-sizing: border-box;
+    margin-left: 1.5rem;
+}
+
+
+.contact-container {
+    background-color: #001f4d; 
+    padding: 2rem;
+    display: flex;
+    gap: 2rem;
+}
+
+.contact-image {
+    background-image: url('./assets/barista.png');
+    background-size: cover;
+    background-position: center;
+    min-height: 37.5rem;}
+
+
 .contact-img-element {
     width: 80%;
     object-fit: cover;
@@ -11,9 +36,33 @@
     justify-content: center;
     padding-bottom: 2rem;
     padding-left: 5rem;
+
 }
 
 .custom-input {
     background: beige;
     color: black;
+
 }
+
+/* Ocultar img móviles */
+@media (max-width: 768px) {
+    .contact-image {
+        display: none;
+    }
+}
+
+.logo-img {
+    width: 6.25rem;
+    height: auto;
+}
+
+.contact-image {
+    background-image: url('../assets/barista.png');
+    background-size: cover;
+    background-position: center;
+    min-height: 37.5rem;
+    border-radius: 8px;
+    overflow: hidden;
+}
+

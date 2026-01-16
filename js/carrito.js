@@ -10,6 +10,7 @@ function borrarProducto(id) {
   localStorage.setItem("products", JSON.stringify(productos));
   cargarProductos();
 }
+
 function cargarProductos() {
   let productos = JSON.parse(localStorage.getItem("products")) || {};
   tabla.clear();

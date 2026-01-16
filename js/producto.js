@@ -84,33 +84,36 @@ async function getProductos() {
     // 1. Apuntamos a tu controlador de Spring Boot
     const res = await fetch("http://localhost:8080/api/productos");
     if (!res.ok) throw new Error("Error al obtener datos de la base de datos");
-    
+
     const data = await res.json(); // Aquí recibimos la lista de Producto.java
 
     // 2. Adaptamos los datos: Java usa 'imagen_url', JS espera 'foto'
     const productosAdaptados = await Promise.all(
       data.map(async (item) => {
         // Validamos la imagen usando tu función existente
-        const imagenValida = await validarImagen(item.imagen_url); 
-        
+        const imagenValida = await validarImagen(item.imagen_url);
+
         return {
           ...item,
           foto: imagenValida, // Creamos la propiedad 'foto' que usa tu createCards
           // Forzamos minúsculas para que el filter funcione siempre (cafe, pasteleria)
-          categoria: item.categoria.toLowerCase() 
+          categoria: item.categoria.toLowerCase(),
         };
       })
     );
 
     // 3. Filtrado y renderizado (Cafe)
-    cafeData = productosAdaptados.filter(item => item.categoria === "cafe");
+    cafeData = productosAdaptados.filter((item) => item.categoria === "cafe");
     if (cards_cafe) {
       cards_cafe.innerHTML = ""; // Limpiar contenido previo si fuera necesario
       cards_cafe.insertAdjacentHTML("beforeend", createCards(cafeData));
     }
 
     // 4. Filtrado y renderizado (Pastelería)
-    postreData = productosAdaptados.filter(item => item.categoria === "pasteleria" || item.categoria === "pastelería");
+    postreData = productosAdaptados.filter(
+      (item) =>
+        item.categoria === "pasteleria" || item.categoria === "pastelería"
+    );
     if (cardsPostre) {
       cardsPostre.innerHTML = "";
       cardsPostre.insertAdjacentHTML("beforeend", createCards(postreData));
@@ -120,7 +123,7 @@ async function getProductos() {
   } catch (error) {
     console.error("Fallo la conexión con el servidor:", error);
   }
-}// getTeam
+} // getTeam
 
 function getInfo(id) {
   const index = parseInt(id.replace("info", ""), 10) - 1;
@@ -240,7 +243,7 @@ async function cargarProductosLocales() {
     if (cardsPostre) {
       cardsPostre.insertAdjacentHTML("beforeend", createCards(postreLocales));
     }
-    cargarCantidadLS()
+    cargarCantidadLS();
   } catch (error) {}
 }
   **/
@@ -272,7 +275,7 @@ function cambiarLista(nombre, precio, cantidad) {
     }
   }
   if (!encontrado) {
-    let nuevoProducto = Object.keys(listaDeCompras).length + 1; 
+    let nuevoProducto = Object.keys(listaDeCompras).length + 1;
     listaDeCompras[nuevoProducto] = {
       nombre: nombre,
       precio: precio,
@@ -286,24 +289,24 @@ function cambiarLista(nombre, precio, cantidad) {
 */
 
 function cambiarLista(id, nombre, precio, cantidad) {
-    listaDeCompras = JSON.parse(localStorage.getItem("products")) || {};
- const idProd = id.toString();
+  listaDeCompras = JSON.parse(localStorage.getItem("products")) || {};
+  const idProd = id.toString();
 
-    if (parseInt(cantidad) <= 0) {
-        delete listaDeCompras[idProd];
-    } else {
-        listaDeCompras[idProd] = {
-            id: idProd, 
-            nombre: nombre,
-            precio: parseFloat(precio.replace(/[^0-9.-]+/g,"")), 
-            cantidad: Number(cantidad)
-        };
-    }
+  if (parseInt(cantidad) <= 0) {
+    delete listaDeCompras[idProd];
+  } else {
+    listaDeCompras[idProd] = {
+      id: idProd,
+      nombre: nombre,
+      precio: parseFloat(precio.replace(/[^0-9.-]+/g, "")),
+      cantidad: Number(cantidad),
+    };
+  }
 
-    localStorage.setItem("products", JSON.stringify(listaDeCompras));
+  localStorage.setItem("products", JSON.stringify(listaDeCompras));
 }
 
-function cargarCantidadLS (){
+function cargarCantidadLS() {
   const productsPrevio = JSON.parse(localStorage.getItem("products")) || {};
   const products = Array.isArray(productsPrevio)
     ? productsPrevio
@@ -362,26 +365,26 @@ document.addEventListener("click", (e) => {
 **/
 
 document.addEventListener("click", (e) => {
-    const btnSuma = e.target.closest(".btn-agregar");
-    const btnResta = e.target.closest(".btn-quitar");
+  const btnSuma = e.target.closest(".btn-agregar");
+  const btnResta = e.target.closest(".btn-quitar");
 
-    if (btnSuma || btnResta) {
-        const btn = btnSuma || btnResta;
-        const id = btn.dataset.id;
-        const input = document.getElementById(`contador-${id}`);
-        const name = document.getElementById(`nombre-${id}`).textContent;
-        const price = document.getElementById(`precio-${id}`).textContent;
+  if (btnSuma || btnResta) {
+    const btn = btnSuma || btnResta;
+    const id = btn.dataset.id;
+    const input = document.getElementById(`contador-${id}`);
+    const name = document.getElementById(`nombre-${id}`).textContent;
+    const price = document.getElementById(`precio-${id}`).textContent;
 
-        if (btnSuma) {
-            input.value = parseInt(input.value) + 1;
-        } else {
-            const cantidadActual = parseInt(input.value);
-            if (cantidadActual > 0) input.value = cantidadActual - 1;
-        }
-
-        // Llamamos a la función actualizada con el ID de la base de datos
-        cambiarLista(id, name, price, input.value);
+    if (btnSuma) {
+      input.value = parseInt(input.value) + 1;
+    } else {
+      const cantidadActual = parseInt(input.value);
+      if (cantidadActual > 0) input.value = cantidadActual - 1;
     }
+
+    // Llamamos a la función actualizada con el ID de la base de datos
+    cambiarLista(id, name, price, input.value);
+  }
 });
 //Lógica de Deep Link Scroll
 

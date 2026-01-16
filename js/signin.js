@@ -1,5 +1,5 @@
 let users = [];
-
+import { API_URLS } from './urls.js';
 const form = document.getElementById("signinForm");
 const userName = document.getElementById("userName");
 const userLastName = document.getElementById("userLastName");
@@ -216,17 +216,17 @@ async function registerUserBackend() {
     colonia: userNeighborhood.value.trim(),
     codigoPostal: userPostalCode.value.trim(),
     contrasena: userPassword.value,
-    subindice: "Client",
+    subindice: "",
     tipoUsuarioId: 2,
   };
-
+console.log(JSON.stringify(payload))
   try {
-    const res = await fetch("http://localhost:8080/api/usuarios", {
+    const res = await fetch(API_URLS.usuarios, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
     });
-
+    console.log(res);
     // Si tu backend manda errores en texto:
     if (!res.ok) {
       const errText = await res.text();

@@ -162,7 +162,7 @@ send.addEventListener("click", function (event) {
 });
 
 async  function guardar(){
-  console.log("hola");
+
 const bodyData = {
   nombre: document.getElementById("nombre").value,
   correo: email.value,

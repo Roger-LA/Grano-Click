@@ -149,7 +149,7 @@ send.addEventListener("click", function (event) {
 
   respuesta.innerHTML = '';
   if (resultados[0]) {
-    //enviarCorreo();
+    enviarCorreo();
     guardar();
     form.reset();
     camposConReglas.forEach(({ input }) => {

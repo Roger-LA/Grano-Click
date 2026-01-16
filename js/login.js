@@ -1,3 +1,5 @@
+import { API_URLS } from './urls.js';
+
 const form = document.getElementById("loginForm");
 const localCorreo = document.getElementById("emails");
 const localPass = document.getElementById("pass");
@@ -79,7 +81,7 @@ async function loginBackend() {
   const password = localPass.value.trim();
 
   try {
-    const res = await fetch("http://localhost:8080/api/login", {
+    const res = await fetch(API_URLS.login, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ correo: correo, contrasena: password }),
